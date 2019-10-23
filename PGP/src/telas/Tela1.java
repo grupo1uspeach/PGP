@@ -16,10 +16,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import limitador.SoLetras;
+import limitador.SoNumeros;
 import telas.BotaoAbrirTelas;
 import telas.ValidaCampos;
+
 import java.io.IOException;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import javax.swing.JToolBar;
 
 public class Tela1 extends BotaoAbrirTelas {
 
@@ -31,7 +35,7 @@ public class Tela1 extends BotaoAbrirTelas {
     protected JTextField textSobrenome;
     private JTextField textDepto;
     private JTextField textIdade;
-    private JTextField textSexo;
+    private JComboBox<String> sexo;
 
     ValidaCampos valida = new ValidaCampos();
 
@@ -56,88 +60,99 @@ public class Tela1 extends BotaoAbrirTelas {
         setFrame(new JFrame(" "));
         getFrame().getContentPane().setBackground(new Color(204, 255, 153));
         getFrame().setBackground(Color.WHITE);
-        // getFrame().setBounds(100, 100, 450, 300);
-        getFrame().setBounds(100, 100, 500, 400);
+        getFrame().setBounds(100, 100, 900, 700);
+        getFrame().setLocationRelativeTo(null);
+        getFrame().setExtendedState(JFrame.MAXIMIZED_BOTH);
         getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getFrame().getContentPane().setLayout(null);
-        getFrame().setResizable(false);
 
         JLabel lblCodFunc = new JLabel("Cod. Funcional:");
         lblCodFunc.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-        lblCodFunc.setBounds(70, 54, 32, 16);
-        getFrame().add(lblCodFunc);
+        lblCodFunc.setBounds(10, 54, 100, 16);
+        getFrame().getContentPane().add(lblCodFunc);
 
         JLabel lblNome = new JLabel("Nome:");
         lblNome.setFont(new Font("Segoe UI", Font.PLAIN, 13));
         lblNome.setBounds(60, 100, 42, 16);
-        getFrame().add(lblNome);
+        getFrame().getContentPane().add(lblNome);
 
         JLabel lblSobrenome = new JLabel("Sobrenome:");
         lblSobrenome.setFont(new Font("Segoe UI", Font.PLAIN, 13));
         lblSobrenome.setBounds(28, 146, 75, 16);
-        getFrame().add(lblSobrenome);
+        getFrame().getContentPane().add(lblSobrenome);
 
         JLabel lblDpto = new JLabel("Departamento:");
         lblDpto.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-        lblDpto.setBounds(40, 235, 59, 16);
-        getFrame().add(lblDpto);
+        lblDpto.setBounds(57, 525, 195, 33);
+        getFrame().getContentPane().add(lblDpto);
 
         JLabel lblIdade = new JLabel("Idade:");
         lblIdade.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-        lblIdade.setBounds(62, 190, 42, 16);
-        getFrame().add(lblIdade);
+        lblIdade.setBounds(293, 467, 42, 16);
+        getFrame().getContentPane().add(lblIdade);
 
         JLabel lblSexo = new JLabel("Sexo:");
         lblSexo.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-        lblSexo.setBounds(155, 190, 32, 16);
-        getFrame().add(lblSexo);
+        lblSexo.setBounds(410, 467, 32, 16);
+        getFrame().getContentPane().add(lblSexo);
 
         textCodFunc = new JTextField();
-        textCodFunc.setBounds(110, 50, 122, 28);
+        textCodFunc.setBounds(359, 111, 175, 28);
         textCodFunc.setColumns(10);
-        getFrame().add( textCodFunc);
+        textCodFunc.setDocument(new SoNumeros(14));
+        getFrame().getContentPane().add( textCodFunc);
 
         textNome = new JTextField();
-        textNome.setBounds(110, 95, 122, 28);
-        getFrame().add(textNome);
+        textNome.setBounds(293, 250, 307, 28);
+        textNome.setDocument(new SoLetras(25));
+        getFrame().getContentPane().add(textNome);
         textNome.setColumns(10);
 
         textSobrenome = new JTextField();
-        textSobrenome.setBounds(110, 140, 307, 28);
-        getFrame().add(textSobrenome);
+        textSobrenome.setBounds(293, 389, 307, 28);
+        textSobrenome.setDocument(new SoLetras(25));
+        getFrame().getContentPane().add(textSobrenome);
         textSobrenome.setColumns(10);
 
         textDepto = new JTextField();
-        textDepto.setBounds(110, 230, 307, 28);
-        getFrame().add(textDepto);
+        textDepto.setBounds(293, 527, 307, 28);
+        textDepto.setDocument(new SoLetras(25));
+        getFrame().getContentPane().add(textDepto);
         textDepto.setColumns(10);
 
         textIdade = new JTextField();
-        textIdade.setBounds(110, 185, 30, 28);
-        getFrame().add(textIdade);
+        textIdade.setBounds(341, 461, 30, 28);
+        textIdade.setDocument(new SoNumeros(2));	
+        getFrame().getContentPane().add(textIdade);
         textIdade.setColumns(10);
 
-        textSexo = new JTextField();
-        textSexo.setBounds(190, 185, 30, 28);
-        getFrame().add(textSexo);
-        textSexo.setColumns(10);
-
         JLabel lblCada = new JLabel("FUNCIONÁRIO AVALIADO");
-        lblCada.setFont(new Font("Segoe UI Semibold", Font.BOLD, 20));
-        lblCada.setBounds(135, 11, 310, 24);
-        getFrame().add(lblCada);
+        lblCada.setFont(new Font("Segoe UI Black", Font.BOLD, 30));
+        lblCada.setBounds(235, 11, 424, 24);
+        getFrame().getContentPane().add(lblCada);
 
         identificaFunc = new JButton("Avançar");
         identificaFunc.setFont(new Font("Verdana", Font.BOLD, 12));
         identificaFunc.setForeground(Color.DARK_GRAY);
         identificaFunc.setBackground(Color.WHITE);
-        identificaFunc.setBounds(200, 280, 100, 23);
+        identificaFunc.setBounds(388, 601, 117, 33);
         identificaFunc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 identFuncActionPerformed(evt);
             }
         });
-        getFrame().add(identificaFunc);
+        getFrame().getContentPane().add(identificaFunc);
+        
+        sexo = new JComboBox<>();
+        sexo.setMaximumRowCount(4);
+        sexo.setBounds(452, 465, 144, 20);
+        sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Selecione"}));
+        String[] sexos = {"Feminino", "Masculino"};
+        for(int i = 0; i <sexos.length; i++) {
+        	sexo.addItem(sexos[i]);
+        }
+        frmTela1.getContentPane().add(sexo);
+        
         // addActionListener(identificaFunc, "abreTela2");
     }
 
@@ -147,6 +162,8 @@ public class Tela1 extends BotaoAbrirTelas {
 
     public void setFrame(JFrame frame) {
         this.frmTela1 = frame;
+        frmTela1.setResizable(false);
+        frmTela1.setAlwaysOnTop(true);
     }
 
     // ACAO DO BOTAO AVANÇAR
@@ -160,7 +177,7 @@ public class Tela1 extends BotaoAbrirTelas {
         String sobrenome = textSobrenome.getText();
         String departamento = textDepto.getText();
         String idade = textIdade.getText();
-        String sexo = textSexo.getText();
+        String sexo = this.sexo.getSelectedItem().toString();
 
         // VERIFICACAO IMPORTANTE
         if (CodFunc.isEmpty()) {
