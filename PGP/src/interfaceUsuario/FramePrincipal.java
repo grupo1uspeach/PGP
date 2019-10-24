@@ -10,11 +10,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class FramePrincipal extends JFrame {
+	public FramePrincipal() {
+	}
 
 	protected JLabel titulo;
 	protected JLabel periodo;
-	protected int height = 900;
-	protected int width = 900;
+	protected int height = 600;
+	protected int width = 700;
 	protected JMenuBar menuBar;
 	protected JMenu voltar;
 
@@ -36,7 +38,7 @@ public class FramePrincipal extends JFrame {
 
 		getContentPane().setBackground(new Color(204, 255, 153));
         setBackground(Color.WHITE);
-        setBounds(100, 100, height, width);
+        setBounds(100, 100, width, height);
         setLocationRelativeTo(null);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,9 +76,5 @@ public class FramePrincipal extends JFrame {
 			periodo.setText("Status do periodo de Matricula: Fechado");
 		}
 	}
-
-	/**
-	 * ****************************************************************************
-	 */
 
 }
