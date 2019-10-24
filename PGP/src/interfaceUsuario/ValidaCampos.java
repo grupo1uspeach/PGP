@@ -1,4 +1,4 @@
-package telas;
+package interfaceUsuario;
 
 import java.text.Normalizer;
 import javax.swing.JOptionPane;
@@ -8,12 +8,7 @@ public class ValidaCampos {
 	//INFORMACOES DO FUNCIONARIO
 	
 	public boolean verificaCPF(String CodFunc) {
-        /*
-        if (CodFunc.length() != 11) {
-            JOptionPane.showMessageDialog(null, "Codigo funcional invalido!\nDeve ter N digitos.");
-            return false;
-        }
-        */
+
         if (!CodFunc.matches("[0-9]+")) {
             JOptionPane.showMessageDialog(null, "Codigo funcional possui caracteres invalidos!");
             return false;

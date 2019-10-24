@@ -8,7 +8,7 @@ public class SoNumeros extends PlainDocument{
 	private int qtdMax;
 	public SoNumeros(int maxLen) {
 		super();
-		if(maxLen <=0) {
+		if(maxLen <= 0) {
 			throw new IllegalArgumentException("Defina o Tamanho maximo do campo");
 		}
 		qtdMax = maxLen;
