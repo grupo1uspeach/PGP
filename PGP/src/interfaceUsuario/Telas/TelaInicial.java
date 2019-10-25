@@ -22,7 +22,6 @@ import limitador.SoNumeros;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -41,6 +40,9 @@ public class TelaInicial extends FramePrincipal {
 
 	/****************************************************************************/
 	public TelaInicial() {
+		
+		this.height = 600;
+		this.width = 700;
 		initialize();
 		setTitulo("Funcionario Avaliado");
 		adicionaComponentes();
@@ -48,53 +50,54 @@ public class TelaInicial extends FramePrincipal {
 
 	/****************************************************************************/
 	private void adicionaComponentes() {
-		LinkedList<JLabel> listaCampos = new LinkedList<JLabel>();
-		listaCampos.add(new JLabel("Cod. Funcional:"));
-		listaCampos.get(0).setFont(new Font("Segoe UI", Font.PLAIN, 13));
+		LinkedList<JLabel> listaLabels = new LinkedList<JLabel>();
+		listaLabels.add(new JLabel("Cod. Funcional:"));
+		listaLabels.get(0).setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
-		listaCampos.add(new JLabel("Nome:"));
-		listaCampos.get(1).setFont(new Font("Segoe UI", Font.PLAIN, 13));
+		listaLabels.add(new JLabel("Nome:"));
+		listaLabels.get(1).setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
-		listaCampos.add(new JLabel("Sobrenome:"));
-		listaCampos.get(2).setFont(new Font("Segoe UI", Font.PLAIN, 13));
+		listaLabels.add(new JLabel("Sobrenome:"));
+		listaLabels.get(2).setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
-		listaCampos.add(new JLabel("Departamento:"));
-		listaCampos.get(3).setFont(new Font("Segoe UI", Font.PLAIN, 13));
+		listaLabels.add(new JLabel("Departamento:"));
+		listaLabels.get(3).setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
-		listaCampos.add(new JLabel("Idade:"));
-		listaCampos.get(4).setFont(new Font("Segoe UI", Font.PLAIN, 13));
+		listaLabels.add(new JLabel("Idade:"));
+		listaLabels.get(4).setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
-		listaCampos.add(new JLabel("Sexo:"));
-		listaCampos.get(5).setFont(new Font("Segoe UI", Font.PLAIN, 13));
+		listaLabels.add(new JLabel("Sexo:"));
+		listaLabels.get(5).setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
-		LinkedList<JTextField> listaTextos = new LinkedList<JTextField>();
+		LinkedList<JTextField> listaCampos = new LinkedList<JTextField>();
 
 		// Testo Cod. Funcional
-		listaTextos.add(this.txtCodFunc = new JTextField());
-		listaTextos.get(0).setColumns(10);
-		listaTextos.get(0).setDocument(new SoNumeros(14));
+		listaCampos.add(this.txtCodFunc = new JTextField());
+		listaCampos.get(0).setColumns(10);
+		listaCampos.get(0).setDocument(new SoNumeros(14));
 
 		// Texto Nome
-		listaTextos.add(this.txtNome = new JTextField());
-		listaTextos.get(1).setColumns(10);
-		listaTextos.get(1).setDocument(new SoLetras(25));
+		listaCampos.add(this.txtNome = new JTextField());
+		listaCampos.get(1).setColumns(10);
+		listaCampos.get(1).setDocument(new SoLetras(25));
 
 		// Texto Sobrenome
-		listaTextos.add(this.txtSobrenome = new JTextField());
-		listaTextos.get(2).setColumns(10);
-		listaTextos.get(2).setDocument(new SoLetras(25));
+		listaCampos.add(this.txtSobrenome = new JTextField());
+		listaCampos.get(2).setColumns(10);
+		listaCampos.get(2).setDocument(new SoLetras(25));
+		
 
 		// Texto Departamento
-		listaTextos.add(this.txtDepto = new JTextField());
-		listaTextos.get(3).setColumns(10);
-		listaTextos.get(3).setDocument(new SoLetras(25));
+		listaCampos.add(this.txtDepto = new JTextField());
+		listaCampos.get(3).setColumns(10);
+		listaCampos.get(3).setDocument(new SoLetras(25));
 
 		// Texto Idade
-		listaTextos.add(this.txtIdade = new JTextField());
-		listaTextos.get(4).setColumns(10);
-		listaTextos.get(4).setDocument(new SoNumeros(2));
+		listaCampos.add(this.txtIdade = new JTextField());
+		listaCampos.get(4).setColumns(10);
+		listaCampos.get(4).setDocument(new SoNumeros(2));
 
-		insereElementos(listaTextos, listaCampos);
+		insereElementos(listaCampos, listaLabels);
 	}
 
 	/****************************************************************************/
@@ -159,11 +162,11 @@ public class TelaInicial extends FramePrincipal {
 		}
 
 		btnAvancar = new JButton("Avançar");
-		Dimension dBtn = btnAvancar.getPreferredSize();
 		btnAvancar.setFont(new Font("Verdana", Font.BOLD, 12));
 		btnAvancar.setForeground(Color.DARK_GRAY);
 		btnAvancar.setBackground(Color.WHITE);
-		btnAvancar.setBounds(width / 2, deslocamentoLbl + lblY / 2, dBtn.width, dBtn.height);
+		Dimension dBtn = btnAvancar.getPreferredSize();
+		btnAvancar.setBounds( (int)(width - dBtn.width - 0.05*width), (int) (height - dBtn.height - 0.12*height), dBtn.width, dBtn.height);
 		btnAvancar.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				btnAvancar(evt);
@@ -222,7 +225,6 @@ public class TelaInicial extends FramePrincipal {
 							JOptionPane.showMessageDialog(this, "Nome esta vazio!");
 							return;
 						}
-						System.out.println("teste");
 						if (sobrenome.isEmpty()) {
 							JOptionPane.showMessageDialog(this, "Sobrenome esta vazio!");
 							return;
@@ -248,6 +250,7 @@ public class TelaInicial extends FramePrincipal {
 								"idade = " + idade + "\n" + 
 								"sexo = " + sexo;
 						c.write(cadastro);
+						c.close();
 					} else return;
 				}
 

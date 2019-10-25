@@ -3,11 +3,7 @@ package interfaceUsuario;
 
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
 import java.awt.*;
-import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class FramePrincipal extends JFrame {
 	public FramePrincipal() {
@@ -15,10 +11,10 @@ public class FramePrincipal extends JFrame {
 
 	protected JLabel titulo;
 	protected JLabel periodo;
-	protected int height = 600;
-	protected int width = 700;
+	protected int height = 700;
+	protected int width = 1000;
 	protected JMenuBar menuBar;
-	protected JMenu voltar;
+	protected JMenu sair;
 
 	/**
 	 * ****************************************************************************
@@ -32,9 +28,9 @@ public class FramePrincipal extends JFrame {
 		
 		// Menu de voltar
 		menuBar = new JMenuBar();
-		voltar = new JMenu();
-		voltar.setText("Voltar");
-		menuBar.add(voltar);
+		sair = new JMenu();
+		sair.setText("Sair");
+		menuBar.add(sair);
 
 		getContentPane().setBackground(new Color(204, 255, 153));
         setBackground(Color.WHITE);
@@ -67,14 +63,6 @@ public class FramePrincipal extends JFrame {
 
 	protected void sair(MenuEvent ev) {
 		// TODO os filhos devem implementar
-	}
-
-	protected void mudaPeriodo() {
-		if (periodo.getText().charAt(periodo.getText().length() - 2) == 'd') {
-			periodo.setText("Status do periodo de Matricula: Aberto");
-		} else {
-			periodo.setText("Status do periodo de Matricula: Fechado");
-		}
 	}
 
 }

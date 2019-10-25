@@ -1,7 +1,5 @@
 package interfaceUsuario;
 
-import java.util.HashMap;
-import java.util.List;
 import javax.swing.JFrame;
 
 import interfaceUsuario.Telas.TelaAdequacaoAsRegras;
@@ -11,6 +9,12 @@ import interfaceUsuario.Telas.TelaHabilidadesSociais;
 import interfaceUsuario.Telas.TelaInicial;
 import interfaceUsuario.Telas.TelaMetas;
 import interfaceUsuario.Telas.TelaProatividade;
+
+/*
+ * Classe que gerencia as telas para facilitar a navegacao. Sempre que uma nova tela for necessaria, 
+ * bastar passar o nome da tela para o metodo controlaTelas e tambem eh possivel passar a instancia do
+ * objeto do tipo Funcionario entre as telas
+ * */
 
 public class InterfaceController {
 	public static JFrame controlaTelas(String NovaTela, Funcionario funcionarioAvaliado) {
