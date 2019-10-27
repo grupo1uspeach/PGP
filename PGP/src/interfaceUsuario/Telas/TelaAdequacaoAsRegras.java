@@ -1,6 +1,10 @@
 package interfaceUsuario.Telas;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import interfaceUsuario.FramePrincipal;
@@ -20,28 +24,43 @@ public class TelaAdequacaoAsRegras extends FramePrincipal {
 	/****************************************************************************/
 	private void adicionaComponentes() {
 		insereBotoesFixos();
-	}
 
-	/****************************************************************************/
-	protected void insereBotoesFixos() {
-		
 	}
 
 	/****************************************************************************/
 	public void avancar(java.awt.event.ActionEvent evt) {
-		JFrame telaMetas = InterfaceController.controlaTelas("TelaMetas", funcionarioAvaliado);
-		telaMetas.setVisible(true);
-		dispose();
+		JList list = new JList(
+				new String[] { "Continuar avaliando", "Gerar relatório", "Salvar e fechar", "Salvar e avaliar um novo funcionario", "Descartar alteracoes"});
+		JOptionPane.showMessageDialog(this, list, "A avaliacao chegou ao fim. O que deseja fazer?", JOptionPane.PLAIN_MESSAGE);
+		
+		if (Arrays.toString(list.getSelectedIndices()).equals("[1]")) {
+			//Gerar Relatorio
+			geraRelatorio(null);
+		} else if (Arrays.toString(list.getSelectedIndices()).equals("[2]")) {
+			//Salvar e fechar
+			encerrar();
+			dispose();
+		} else if (Arrays.toString(list.getSelectedIndices()).equals("[3]")) {
+			// Salvar e avaliar um novo funcionario
+			encerrar();
+			JFrame telaInicial = InterfaceController.controlaTelas("TelaInicial", null);
+			telaInicial.setVisible(true);
+			dispose();
+
+		} else if (Arrays.toString(list.getSelectedIndices()).equals("[4]")) {
+			
+			// Descartar as alteracoes feitas
+			JFrame telaInicial = InterfaceController.controlaTelas("TelaInicial", null);
+			telaInicial.setVisible(true);
+			dispose();
+
+		}
+
 	}
 
 	/****************************************************************************/
 	public void voltar(java.awt.event.ActionEvent evt) {
-
-		int salvarAvaliacao = JOptionPane.showConfirmDialog(this,
-				"Voce gostaria de salvar os resultados da avaliacao?");
-		if (salvarAvaliacao == 0) {
-			// Salvar avaliacao
-		}
+		
 		JFrame telaProatividade = InterfaceController.controlaTelas("TelaProatividade", null);
 		telaProatividade.setVisible(true);
 		dispose();

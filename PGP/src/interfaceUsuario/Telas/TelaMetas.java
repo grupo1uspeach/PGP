@@ -32,12 +32,6 @@ public class TelaMetas extends FramePrincipal {
 	/****************************************************************************/
 	public void voltar(java.awt.event.ActionEvent evt) {
 
-		int salvarAvaliacao = JOptionPane.showConfirmDialog(this,
-				"Voce gostaria de salvar os resultados da avaliacao?");
-		if (salvarAvaliacao == 0) {
-			// Salvar avaliacao
-		}
-
 		JFrame telaEntrega = InterfaceController.controlaTelas("TelaEntrega", null);
 		telaEntrega.setVisible(true);
 		dispose();
