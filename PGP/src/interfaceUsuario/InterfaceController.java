@@ -2,6 +2,7 @@ package interfaceUsuario;
 
 import javax.swing.JFrame;
 
+import beans.Funcionario;
 import interfaceUsuario.Telas.TelaAdequacaoAsRegras;
 import interfaceUsuario.Telas.TelaEntrega;
 import interfaceUsuario.Telas.TelaHabilidadesPessoais;

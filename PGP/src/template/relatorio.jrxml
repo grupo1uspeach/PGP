@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0270be58-dc1e-414b-9ee6-89bbe25f1a2e">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value="RnVuY2lvbmFyaW8gLDE1LDE1LDZiMDcxMTFmLTA4NzctNDZiOC1hNGQxLWU1ZGEyOTE1YjBlYTs="/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="473"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="526"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<queryString>
+		<![CDATA[SELECT *
+FROM Funcionario]]>
+	</queryString>
+	<field name="nome" class="java.lang.String"/>
+	<field name="idade" class="java.lang.String"/>
+	<field name="sexo" class="java.lang.String"/>
+	<field name="codigoFuncional" class="java.lang.String"/>
+	<field name="departamento" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="130" y="0" width="300" height="79" uuid="c8e9f705-e1b0-45ee-8e0f-4c8b73e4464c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Franklin Gothic Medium" size="26"/>
+				</textElement>
+				<text><![CDATA[Avaliação de Funcionário]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="0" y="0" width="190" height="30" uuid="c7ee639d-3e89-402d-b3df-b97f9fe940e9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Franklin Gothic Medium" size="20"/>
+				</textElement>
+				<text><![CDATA[Dados do Funcionário]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="31" width="551" height="2" forecolor="#A2C6EB" backcolor="#A2C6EB" uuid="94f28364-e3e7-4a5b-b21e-88132d1b87dc">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="122" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="50" height="30" uuid="6dc0babd-482c-4088-b2d8-092952d5c463">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ea7beb30-229b-4b6e-9ea1-a3f2945deb66"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Franklin Gothic Medium" size="14"/>
+				</textElement>
+				<text><![CDATA[Nome:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="0" width="111" height="30" uuid="a1b4428b-4f02-4951-8b86-9a28b4302752">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4a7e3c86-a0ff-48bc-b363-c57e6f166a82"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Franklin Gothic Medium" size="14"/>
+				</textElement>
+				<text><![CDATA[Idade:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="391" y="0" width="79" height="30" uuid="66b4ae4c-19d6-4d20-9bee-8ae5a7452d05">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="77f24865-3edf-4008-ad73-a063a05f9f42"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Franklin Gothic Medium" size="14"/>
+				</textElement>
+				<text><![CDATA[Sexo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="32" width="111" height="30" uuid="3164e070-a7c7-461d-8acd-a193dd02d7ec">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4b5ceb11-4acb-46aa-a91f-321579115812"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Franklin Gothic Medium" size="14"/>
+				</textElement>
+				<text><![CDATA[Código Funcional:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="62" width="100" height="30" uuid="cb842e64-77e3-4fa3-aab9-0e02ef19d1c2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4f89c1f6-123a-4c65-a2a9-5521e5eb3845"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Franklin Gothic Medium" size="14"/>
+				</textElement>
+				<text><![CDATA[Departamento:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="50" y="0" width="111" height="30" uuid="ab3905ec-e3b0-47ff-ae06-54f915374e72">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ea7beb30-229b-4b6e-9ea1-a3f2945deb66"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="0" width="66" height="30" uuid="b59a1c04-7b31-40ce-bad7-f4d97a75a50e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4a7e3c86-a0ff-48bc-b363-c57e6f166a82"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="0" width="110" height="30" uuid="2c16d322-fae6-4a69-be3f-2ef02e580eff">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="77f24865-3edf-4008-ad73-a063a05f9f42"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="32" width="111" height="30" uuid="de953dc5-2708-4562-ba55-5bef4444cef2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4b5ceb11-4acb-46aa-a91f-321579115812"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigoFuncional}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="62" width="125" height="30" uuid="0f92d4fe-904a-44ab-be93-d818c5dd4ef4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4f89c1f6-123a-4c65-a2a9-5521e5eb3845"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{departamento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="500" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="0" y="2" width="190" height="31" uuid="2fe11309-6cc1-49a3-a4e4-e7d7af86b4eb"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Franklin Gothic Medium" size="20"/>
+				</textElement>
+				<text><![CDATA[Avaliação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="40" width="100" height="30" uuid="469cf7f1-e37e-4753-9388-6f2644ea4e6e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Franklin Gothic Medium" size="16"/>
+				</textElement>
+				<text><![CDATA[Entregas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="110" width="100" height="30" uuid="bee7bb03-ef43-4016-aab6-0f37afc7f887"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Franklin Gothic Medium" size="16"/>
+				</textElement>
+				<text><![CDATA[Metas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="180" width="180" height="30" uuid="b6ef481e-4c65-48dd-8c52-87b524b7424e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Franklin Gothic Medium" size="16"/>
+				</textElement>
+				<text><![CDATA[Habilidades Pessoais]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="250" width="180" height="30" uuid="8ccea555-afca-4595-877b-8117bb84ee90"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Franklin Gothic Medium" size="16"/>
+				</textElement>
+				<text><![CDATA[Habilidades Sociais]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="320" width="100" height="30" uuid="ffebd006-bce2-43bb-bde2-67d44b87708c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Franklin Gothic Medium" size="16"/>
+				</textElement>
+				<text><![CDATA[Proatividade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="390" width="175" height="30" uuid="a3fc9e82-3788-4d88-8d0b-2925556db3c7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Franklin Gothic Medium" size="16"/>
+				</textElement>
+				<text><![CDATA[Adequação às regras]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="33" width="551" height="2" forecolor="#A2C6EB" backcolor="#A2C6EB" uuid="f9ecec32-e143-415e-9277-84dd16ea6a76">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+		</band>
+	</detail>
+</jasperReport>

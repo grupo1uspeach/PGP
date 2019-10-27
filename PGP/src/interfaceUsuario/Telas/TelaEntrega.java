@@ -2,8 +2,8 @@ package interfaceUsuario.Telas;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import interfaceUsuario.FramePrincipal;
-import interfaceUsuario.Funcionario;
+
+import beans.Funcionario;
 import interfaceUsuario.InterfaceController;
 
 public class TelaEntrega extends FramePrincipal {

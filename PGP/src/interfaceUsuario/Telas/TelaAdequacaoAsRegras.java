@@ -1,14 +1,11 @@
 package interfaceUsuario.Telas;
 
 import java.util.Arrays;
-import java.util.List;
-
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
-import interfaceUsuario.FramePrincipal;
-import interfaceUsuario.Funcionario;
+import beans.Funcionario;
 import interfaceUsuario.InterfaceController;
 
 public class TelaAdequacaoAsRegras extends FramePrincipal {
@@ -29,15 +26,16 @@ public class TelaAdequacaoAsRegras extends FramePrincipal {
 
 	/****************************************************************************/
 	public void avancar(java.awt.event.ActionEvent evt) {
-		JList list = new JList(
-				new String[] { "Continuar avaliando", "Gerar relatório", "Salvar e fechar", "Salvar e avaliar um novo funcionario", "Descartar alteracoes"});
-		JOptionPane.showMessageDialog(this, list, "A avaliacao chegou ao fim. O que deseja fazer?", JOptionPane.PLAIN_MESSAGE);
-		
+		JList list = new JList(new String[] { "Continuar avaliando", "Gerar relatório", "Salvar e fechar",
+				"Salvar e avaliar um novo funcionario", "Descartar alteracoes" });
+		JOptionPane.showMessageDialog(this, list, "A avaliacao chegou ao fim. O que deseja fazer?",
+				JOptionPane.PLAIN_MESSAGE);
+
 		if (Arrays.toString(list.getSelectedIndices()).equals("[1]")) {
-			//Gerar Relatorio
+			// Gerar Relatorio
 			geraRelatorio(null);
 		} else if (Arrays.toString(list.getSelectedIndices()).equals("[2]")) {
-			//Salvar e fechar
+			// Salvar e fechar
 			encerrar();
 			dispose();
 		} else if (Arrays.toString(list.getSelectedIndices()).equals("[3]")) {
@@ -48,7 +46,6 @@ public class TelaAdequacaoAsRegras extends FramePrincipal {
 			dispose();
 
 		} else if (Arrays.toString(list.getSelectedIndices()).equals("[4]")) {
-			
 			// Descartar as alteracoes feitas
 			JFrame telaInicial = InterfaceController.controlaTelas("TelaInicial", null);
 			telaInicial.setVisible(true);
@@ -60,7 +57,7 @@ public class TelaAdequacaoAsRegras extends FramePrincipal {
 
 	/****************************************************************************/
 	public void voltar(java.awt.event.ActionEvent evt) {
-		
+
 		JFrame telaProatividade = InterfaceController.controlaTelas("TelaProatividade", null);
 		telaProatividade.setVisible(true);
 		dispose();

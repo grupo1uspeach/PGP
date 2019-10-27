@@ -15,8 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import interfaceUsuario.FramePrincipal;
-import interfaceUsuario.Funcionario;
+import beans.Funcionario;
 import interfaceUsuario.InterfaceController;
 import interfaceUsuario.ValidaCampos;
 import limitador.SoLetras;
@@ -52,7 +51,8 @@ public class TelaInicial extends FramePrincipal {
 	private String dataAntePenultimaVersao;
 	private String dataPenultimaVersao;
 	private String dataUltimaVersao;
-	
+	private String dataAlteracaoCadastro;
+
 	
 	private ValidaCampos valida = new ValidaCampos();
 	private final int qtdPerguntasEntrega;
@@ -66,12 +66,12 @@ public class TelaInicial extends FramePrincipal {
 	public TelaInicial() {
 		super(new Funcionario());
 		
-		qtdPerguntasEntrega = 5;
-		qtdPerguntasMetas = 5;
-		qtdPerguntasHabilidadesPessoais = 5;
-		qtdPerguntasHabilidadesSociais  = 5;
-		qtdPerguntasProatividade = 5;
-		qtdPerguntasAdequacaoAsRegras = 5;
+		qtdPerguntasEntrega = 2;
+		qtdPerguntasMetas = 2;
+		qtdPerguntasHabilidadesPessoais = 2;
+		qtdPerguntasHabilidadesSociais  = 2;
+		qtdPerguntasProatividade = 2;
+		qtdPerguntasAdequacaoAsRegras = 2;
 		
 		this.height = 600;
 		this.width = 700;
@@ -260,7 +260,8 @@ public class TelaInicial extends FramePrincipal {
 					cadastro.load(arquivo);
 					
 					dataDeCadastro = cadastro.getProperty("dataDeCadastro");
-
+					dataAlteracaoCadastro = cadastro.getProperty("dataAlteracaoCadastro");
+					
 					dataAntePenultimaAvaliacao = cadastro.getProperty("dataAntePenultimaAvaliacao");
 					dataPenultimaAvaliacao = cadastro.getProperty("dataPenultimaAvaliacao");
 					dataUltimaAvaliacao = cadastro.getProperty("dataUltimaAvaliacao");
@@ -323,6 +324,17 @@ public class TelaInicial extends FramePrincipal {
 						DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 						dataUltimaAvaliacao = dateFormat.format(date).replace(":", "-");
 						
+						dataDeCadastro = dataUltimaAvaliacao;
+						dataAlteracaoCadastro = dataUltimaAvaliacao;
+						
+						dataAntePenultimaAvaliacao = dataUltimaAvaliacao;
+						dataPenultimaAvaliacao = dataUltimaAvaliacao;
+						
+						dataAntePenultimaVersao = dataUltimaAvaliacao;
+						dataPenultimaVersao = dataUltimaAvaliacao;
+						dataUltimaVersao = dataUltimaAvaliacao;
+						
+						
 						pastaFuncionario.mkdirs();
 						FileWriter c = new FileWriter(nomePasta + "/cadastro.properties");
 						String cadastro =
@@ -355,11 +367,18 @@ public class TelaInicial extends FramePrincipal {
 					"Tem certeza que deseja avaliar o funcionario: "+ nome + " " + sobrenome + "?");
 			if (resposta == 0) {
 				
+				funcionarioAvaliado.setDataDeCadastro(dataDeCadastro);
+				funcionarioAvaliado.setDataAlteracaoCadastro(dataAlteracaoCadastro);
+				
 				funcionarioAvaliado.setDataAntePenultimaAvaliacao(dataAntePenultimaAvaliacao);
 				funcionarioAvaliado.setDataPenultimaAvaliacao(dataPenultimaAvaliacao);
 				funcionarioAvaliado.setDataUltimaAvaliacao(dataUltimaAvaliacao);
-				funcionarioAvaliado.setVersaoUltimaAvaliacao(versaoUltimaAvaliacao);
 				
+				funcionarioAvaliado.setDataAntePenultimaVersao(dataAntePenultimaVersao);
+				funcionarioAvaliado.setDataPenultimaVersao(dataPenultimaVersao);
+				funcionarioAvaliado.setDataUltimaVersao(dataUltimaVersao);
+				
+				funcionarioAvaliado.setVersaoUltimaAvaliacao(versaoUltimaAvaliacao);
 				funcionarioAvaliado.setFuncional(codFunc);
 				funcionarioAvaliado.setNome(nome);
 				funcionarioAvaliado.setSobrenome(sobrenome);
@@ -391,8 +410,6 @@ public class TelaInicial extends FramePrincipal {
 				FileInputStream arquivo = new FileInputStream(nomePasta +  "/" + funcionarioAvaliado.getDataUltimaAvaliacao() + "_avaliacao.properties");
 				avaliacao.load(arquivo);
 
-				FileWriter c = new FileWriter(nomePasta + "/avaliacao.properties");
-
 				for (int i = 0; i < qtdPerguntasEntrega; i++) {
 					funcionarioAvaliado.avaliacaoEntrega.add(Integer.parseInt(avaliacao.getProperty("entrega.pergunta" + i)));
 				}
@@ -403,17 +420,14 @@ public class TelaInicial extends FramePrincipal {
 
 				for (int i = 0; i < qtdPerguntasHabilidadesPessoais; i++) {
 					funcionarioAvaliado.avaliacaoHabilidadesPessoais.add(Integer.parseInt(avaliacao.getProperty("habilidadesPessoais.pergunta" + i)));
-
 				}
 
 				for (int i = 0; i < qtdPerguntasHabilidadesSociais; i++) {
 					funcionarioAvaliado.avaliacaoHabilidadesSociais.add(Integer.parseInt(avaliacao.getProperty("habilidadesSociais.pergunta" + i)));
-
 				}
 
 				for (int i = 0; i < qtdPerguntasProatividade; i++) {
 					funcionarioAvaliado.avaliacaoProatividade.add(Integer.parseInt(avaliacao.getProperty("proatividade.pergunta" + i)));
-
 				}
 
 				for (int i = 0; i < qtdPerguntasAdequacaoAsRegras; i++) {
@@ -426,6 +440,30 @@ public class TelaInicial extends FramePrincipal {
 				JOptionPane.showMessageDialog(this, "Nao foi possivel salvar a avaliacao do funcionario");
 			}
 
+		}else {
+			for (int i = 0; i < qtdPerguntasEntrega; i++) {
+				funcionarioAvaliado.avaliacaoEntrega.add(i);
+			}
+
+			for (int i = 0; i < qtdPerguntasMetas; i++) {
+				funcionarioAvaliado.avaliacaoMetas.add(i);
+			}
+
+			for (int i = 0; i < qtdPerguntasHabilidadesPessoais; i++) {
+				funcionarioAvaliado.avaliacaoHabilidadesPessoais.add(i);
+			}
+
+			for (int i = 0; i < qtdPerguntasHabilidadesSociais; i++) {
+				funcionarioAvaliado.avaliacaoHabilidadesSociais.add(i);
+			}
+
+			for (int i = 0; i < qtdPerguntasProatividade; i++) {
+				funcionarioAvaliado.avaliacaoProatividade.add(i);
+			}
+
+			for (int i = 0; i < qtdPerguntasAdequacaoAsRegras; i++) {
+				funcionarioAvaliado.avaliacaoAdequacaoAsRegras.add(i);
+			}
 		}
 	}
 
