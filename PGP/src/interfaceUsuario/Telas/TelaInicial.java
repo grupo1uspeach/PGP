@@ -3,6 +3,8 @@ package interfaceUsuario.Telas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.Properties;
 
@@ -24,23 +26,24 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class TelaInicial extends FramePrincipal {
 
-	private static Funcionario funcionarioAvaliado;
-
-	private JButton btnAvancar;
-	protected JTextField txtCodFunc;
-	protected JTextField txtNome;
-	protected JTextField txtSobrenome;
+	private JTextField txtCodFunc;
+	private JTextField txtNome;
+	private JTextField txtSobrenome;
 	private JTextField txtDepto;
 	private JTextField txtIdade;
 	private JComboBox<String> sexo;
-	ValidaCampos valida = new ValidaCampos();
-
+	private int versaoUltimaAvaliacao;
+	private String dataUltimaAvaliacao;
+	private ValidaCampos valida = new ValidaCampos();
+	
 	/****************************************************************************/
 	public TelaInicial() {
-		
+		super(new Funcionario());
 		this.height = 600;
 		this.width = 700;
 		initialize();
@@ -49,50 +52,59 @@ public class TelaInicial extends FramePrincipal {
 	}
 
 	/****************************************************************************/
+	//Metodo para criar e posicionar os elementos na tela (campos, labels e botoes)
 	private void adicionaComponentes() {
+		//Cria uma lista de labels para inserir posteriormente
 		LinkedList<JLabel> listaLabels = new LinkedList<JLabel>();
+		
+		//Label do campo codigo funcional
 		listaLabels.add(new JLabel("Cod. Funcional:"));
 		listaLabels.get(0).setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
+		//Label do campo nome
 		listaLabels.add(new JLabel("Nome:"));
 		listaLabels.get(1).setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
+		//Label do campo sobrenome
 		listaLabels.add(new JLabel("Sobrenome:"));
 		listaLabels.get(2).setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
+		//Label do campo departamento
 		listaLabels.add(new JLabel("Departamento:"));
 		listaLabels.get(3).setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
+		//Label do campo idade
 		listaLabels.add(new JLabel("Idade:"));
 		listaLabels.get(4).setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
+		//Label do campo sexo
 		listaLabels.add(new JLabel("Sexo:"));
 		listaLabels.get(5).setFont(new Font("Segoe UI", Font.PLAIN, 13));
-
+		
+		//Cria uma lista de caixas de texto para inserir posteriormente
 		LinkedList<JTextField> listaCampos = new LinkedList<JTextField>();
 
-		// Testo Cod. Funcional
+		// Caixa de texto Cod. Funcional
 		listaCampos.add(this.txtCodFunc = new JTextField());
 		listaCampos.get(0).setColumns(10);
 		listaCampos.get(0).setDocument(new SoNumeros(14));
 
-		// Texto Nome
+		// Caixa de texto Nome
 		listaCampos.add(this.txtNome = new JTextField());
 		listaCampos.get(1).setColumns(10);
 		listaCampos.get(1).setDocument(new SoLetras(25));
 
-		// Texto Sobrenome
+		// Caixa de texto Sobrenome
 		listaCampos.add(this.txtSobrenome = new JTextField());
 		listaCampos.get(2).setColumns(10);
 		listaCampos.get(2).setDocument(new SoLetras(25));
 		
-
-		// Texto Departamento
+		// Caixa de texto Departamento
 		listaCampos.add(this.txtDepto = new JTextField());
 		listaCampos.get(3).setColumns(10);
 		listaCampos.get(3).setDocument(new SoLetras(25));
 
-		// Texto Idade
+		// Caixa de texto Idade
 		listaCampos.add(this.txtIdade = new JTextField());
 		listaCampos.get(4).setColumns(10);
 		listaCampos.get(4).setDocument(new SoNumeros(2));
@@ -101,27 +113,33 @@ public class TelaInicial extends FramePrincipal {
 	}
 
 	/****************************************************************************/
+	//Metodo auxiliar para inserir os elementos criados no metodo adicionaComponentes
 	protected void insereElementos(LinkedList<JTextField> txtCampo, LinkedList<JLabel> lblCampos) {
-
+		
+		//Quantidade de campos a serem inseridos
 		int qtdCampos = lblCampos.size();
-
+		
 		Dimension maiorDimensaoLbl = lblCampos.get(0).getPreferredSize();
 		Dimension dimensaoAtualLbl;
-
+		
 		Dimension maiorDimensaoTxt = lblCampos.get(0).getPreferredSize();
 		Dimension dimensaoAtualTxt;
 
 		for (int y = 0; y < qtdCampos; y++) {
+			
+			//Encontra a dimensao da maior label a ser inserida
 			dimensaoAtualLbl = lblCampos.get(y).getPreferredSize();
 			if (dimensaoAtualLbl.width > maiorDimensaoLbl.width) {
 				dimensaoAtualLbl = maiorDimensaoLbl;
 			}
 
+			//Encontra a dimensao do maior campo de texto a ser inserido
 			dimensaoAtualTxt = lblCampos.get(y).getPreferredSize();
 			if (dimensaoAtualTxt.width > maiorDimensaoTxt.width) {
 				dimensaoAtualTxt = maiorDimensaoTxt;
 			}
 		}
+		
 
 		int alturaLbl = maiorDimensaoLbl.height;
 		int espacoDisponivel = height - titulo.getY() - this.titulo.getHeight();
@@ -135,6 +153,8 @@ public class TelaInicial extends FramePrincipal {
 
 		int deslocamentoLbl = this.titulo.getY() / 2;
 		int deslocamentoTxt = titulo.getY() / 2;
+
+		//Laco para inserir os campos e labels em posicoes relativas uns aos outros e ao titulo da tela
 		for (int campo = 0; campo < qtdCampos; campo++) {
 
 			deslocamentoLbl += lblY;
@@ -160,7 +180,8 @@ public class TelaInicial extends FramePrincipal {
 			}
 			deslocamentoTxt += (alturaTxt + alturaLbl) / 2;
 		}
-
+		
+		//Posiciona o botao avancar
 		btnAvancar = new JButton("Avançar");
 		btnAvancar.setFont(new Font("Verdana", Font.BOLD, 12));
 		btnAvancar.setForeground(Color.DARK_GRAY);
@@ -169,10 +190,23 @@ public class TelaInicial extends FramePrincipal {
 		btnAvancar.setBounds( (int)(width - dBtn.width - 0.05*width), (int) (height - dBtn.height - 0.12*height), dBtn.width, dBtn.height);
 		btnAvancar.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				btnAvancar(evt);
+				avancar(evt);
 			}
 		});
 		getContentPane().add(btnAvancar);
+		
+		btnVoltar = new JButton("Sair");
+		btnVoltar.setFont(new Font("Verdana", Font.BOLD, 12));
+		btnVoltar.setForeground(Color.DARK_GRAY);
+		btnVoltar.setBackground(Color.WHITE);
+		dBtn = btnVoltar.getPreferredSize();
+		btnVoltar.setBounds( (int)(0.12*width - dBtn.width), (int) (height - dBtn.height - 0.12*height), dBtn.width, dBtn.height);
+		btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				voltar(evt);
+			}
+		});
+		getContentPane().add(btnVoltar);
 	}
 
 	/****************************************************************************/
@@ -182,7 +216,7 @@ public class TelaInicial extends FramePrincipal {
 	 * TELEFONE E DEPARTAMENTO ACEITAM SEM PREENCHIMENTO E ? COLOCADO VALOR N/A
 	 * NELES
 	 */
-	public void btnAvancar(java.awt.event.ActionEvent evt) {
+	public void avancar(java.awt.event.ActionEvent evt) {
 		String nome, sobrenome, departamento, idade, sexo;
 		nome = sobrenome = departamento = idade = sexo = "";
 		try {
@@ -195,8 +229,8 @@ public class TelaInicial extends FramePrincipal {
 					FileInputStream arquivo = new FileInputStream(nomePasta + "/cadastro.properties");
 					cadastro.load(arquivo);
 					
+					versaoUltimaAvaliacao = Integer.parseInt(cadastro.getProperty("ultimaAvaliacao"));
 					nome = cadastro.getProperty("nome");
-
 					sobrenome = cadastro.getProperty("sobrenome");
 					departamento = cadastro.getProperty("departamento");
 					idade = cadastro.getProperty("idade");
@@ -219,6 +253,7 @@ public class TelaInicial extends FramePrincipal {
 						departamento = this.txtDepto.getText();
 						idade = this.txtIdade.getText();
 						sexo = this.sexo.getSelectedItem().toString();
+						versaoUltimaAvaliacao = 0;
 						
 						// VERIFICACAO IMPORTANTE
 						if (nome.isEmpty()) {
@@ -243,7 +278,13 @@ public class TelaInicial extends FramePrincipal {
 
 						pastaFuncionario.mkdirs();
 						FileWriter c = new FileWriter(nomePasta + "/cadastro.properties");
+						
+						Date date = Calendar.getInstance().getTime();  
+						DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+						String dataUltimaAvaliacao = dateFormat.format(date);
+						
 						String cadastro =
+								"versaoUltimaAvaliacao = " + "0" +
 								"nome = " + nome + "\n" +
 								"sobrenome = " + sobrenome + "\n" + 
 								"departamento = " + departamento + "\n" + 
@@ -251,6 +292,7 @@ public class TelaInicial extends FramePrincipal {
 								"sexo = " + sexo;
 						c.write(cadastro);
 						c.close();
+
 					} else return;
 				}
 
@@ -262,7 +304,14 @@ public class TelaInicial extends FramePrincipal {
 			int resposta = JOptionPane.showConfirmDialog(this,
 					"Tem certeza que deseja avaliar o funcionario: "+ nome + " " + sobrenome + "?");
 			if (resposta == 0) {
-				funcionarioAvaliado = new Funcionario();
+				funcionarioAvaliado.setVersaoUltimaAvaliacao(versaoUltimaAvaliacao);
+				funcionarioAvaliado.setFuncional(codFunc);
+				funcionarioAvaliado.setNome(nome);
+				funcionarioAvaliado.setSobrenome(sobrenome);
+				funcionarioAvaliado.setDepartamento(departamento);
+				funcionarioAvaliado.setIdade(idade);
+				funcionarioAvaliado.setSexo(sexo);
+				
 				JFrame telaEntrega = InterfaceController.controlaTelas("TelaEntrega", funcionarioAvaliado);
 				telaEntrega.setVisible(true);
 				dispose();
@@ -276,6 +325,14 @@ public class TelaInicial extends FramePrincipal {
 		}
 
 	}
-	/****************************************************************************/
 	
+	/****************************************************************************/
+	public void voltar(java.awt.event.ActionEvent evt) {
+		
+		//Perguntar se a pessoa tem ctz que quer sair
+		int encerrarAvaliacao = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja sair?");
+		if (encerrarAvaliacao == 0) {
+			dispose();
+		}
+	}
 }
