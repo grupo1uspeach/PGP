@@ -14,25 +14,23 @@ import java.io.InputStream;
 import java.util.List;
 
 public class Relatorio {
-
+	
 	public void geraRelatorio(List<Funcionario> lista_func) throws JRException {
 
 		/* CARREGA O CODIGO FONTE PARA GERACAO DE RELATORIOS */
-		InputStream cod_fonte = Relatorio.class.getResourceAsStream("/template/relatorio.jrxml");
-
+		//InputStream cod_fonte = Relatorio.class.getResourceAsStream("/template/relatorio.jrxml");
+		
 		/* COMPILA O CODIGO FONTE */
-		JasperReport relatorio = JasperCompileManager.compileReport(cod_fonte);
+		JasperReport relatorio = JasperCompileManager.compileReport("template/relatorio.jrxml");
 
 		/* GRAVA OS DADOS NO RELATORIO */
 		JasperPrint print = JasperFillManager.fillReport(relatorio, null, new JRBeanCollectionDataSource(lista_func));
 
-		String nomePasta = "log/" + lista_func.get(0).getCodigoFuncional() + "/relatorio";
-
+		String nomePasta = "log/" + lista_func.get(0).getCodigoFuncional() + "/relatorio/";
 		File pastaRelatorio = new File(nomePasta);
 		if (!pastaRelatorio.exists()) {
 			pastaRelatorio.mkdirs();
 		}
-		
 
 		JasperExportManager.exportReportToPdfFile(print, pastaRelatorio + "/" + lista_func.get(0).getDataUltimaVersao() + "_relatorio_"+ lista_func.get(0).getCodigoFuncional() + ".pdf");
 		/* GERA VISUALIZACAO DO RELATORIO */

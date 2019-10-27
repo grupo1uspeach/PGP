@@ -7,14 +7,15 @@ import net.sf.jasperreports.engine.JRException;
 import beans.Relatorio;
 
 import java.awt.*;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
 public abstract class FramePrincipal extends JFrame {
 
@@ -37,6 +38,7 @@ public abstract class FramePrincipal extends JFrame {
 	}
 
 	/*****************************************************************************/
+	//Metodo que inicializa os elementos comuns a todas as classes filhas
 	protected void initialize() {
 		titulo = new JLabel();
 		titulo.setFont(new Font("Segoe UI Black", Font.BOLD, 30));
@@ -58,20 +60,18 @@ public abstract class FramePrincipal extends JFrame {
 		setJMenuBar(menuBar);
 	}
 
-	/**
-	 * ****************************************************************************
-	 */
-
+	/*****************************************************************************/
+	//Metodo para alterar o titulo da tela 
 	protected void setTitulo(String t) {
 		titulo.setText(t);
 		Dimension dimensaopreferida = titulo.getPreferredSize();
-		// int desloc = 5*(width - dimensaopreferida.width)/6;
 		int desloc = (width - dimensaopreferida.width) / 2;
 		titulo.setBounds(desloc, height / 30, dimensaopreferida.width, dimensaopreferida.height);
 
 	}
 
 	/****************************************************************************/
+	//Metodo para inserir os quatro botoes que sao fixos em todas as telas menos na inicial
 	protected void insereBotoesFixos() {
 
 		// Inicializa o botao voltar
@@ -151,14 +151,15 @@ public abstract class FramePrincipal extends JFrame {
 	}
 
 	/****************************************************************************/
-	// Cada classe filha deve implementar esse metodo de uma forma diferente
+	// Cada classe filha deve implementar esse metodo de uma forma diferente, pois chama uma tela diferente
 	public abstract void avancar(java.awt.event.ActionEvent evt);
 
 	/****************************************************************************/
-	// Cada classe filha deve implementar esse metodo de uma forma diferente
+	// Cada classe filha deve implementar esse metodo de uma forma diferente, pois chama uma tela diferente
 	public abstract void voltar(java.awt.event.ActionEvent evt);
 
 	/****************************************************************************/
+	//Salva a versao atual das respostas do usuario. Serve para manter as ultimas versoes salvas em disco
 	public void salvar(java.awt.event.ActionEvent evt) {
 		String nomePasta = "log/" + funcionarioAvaliado.getCodigoFuncional();
 		
@@ -215,12 +216,12 @@ public abstract class FramePrincipal extends JFrame {
 	}
 
 	/****************************************************************************/
+	//Salva o relatorio na pasta do funcionario e exibe o relatorio em tela que o usuario tambem tenha a opcao de conferir os dados e salvar em outro lugar
 	protected void geraRelatorio(java.awt.event.ActionEvent evt) {
         
 		List<Funcionario> lista_func = new ArrayList<Funcionario>();
 		
 		lista_func.add(funcionarioAvaliado);
-		//System.out.println(funcionarioAvaliado.getNome());
 		Relatorio relatorio = new Relatorio();
 		try {
 			relatorio.geraRelatorio(lista_func);
@@ -231,9 +232,13 @@ public abstract class FramePrincipal extends JFrame {
 		}
 
 	}
-
+	
+	/****************************************************************************/
+	//Alem de salvar a versao atual, atualiza no arquivo de cadastro, qual foi a ultima versao finalizada
 	protected void encerrar() {
 		salvar(null);
+		String nomePasta = "log/" + funcionarioAvaliado.getCodigoFuncional();
+
 		funcionarioAvaliado.setVersaoUltimaAvaliacao(funcionarioAvaliado.getVersaoUltimaAvaliacao() + 1);
 		funcionarioAvaliado.setDataAntePenultimaAvaliacao(funcionarioAvaliado.getDataPenultimaAvaliacao());
 		funcionarioAvaliado.setDataPenultimaAvaliacao(funcionarioAvaliado.getDataUltimaAvaliacao());
@@ -241,26 +246,16 @@ public abstract class FramePrincipal extends JFrame {
 		
 		try {
 			
-			String nomePasta = "log/" + funcionarioAvaliado.getCodigoFuncional();
+			Properties cadastro = new Properties();
+			FileInputStream arquivo = new FileInputStream(nomePasta + "/cadastro.properties");
+			cadastro.load(arquivo);
 			
-			FileWriter c = new FileWriter(nomePasta + "/cadastro.properties");
-			String cadastro =
-							"dataDeCadastro = " + funcionarioAvaliado.getDataDeCadastro() + "\n" +
-							"dataAlteracaoCadastro = " + funcionarioAvaliado.getDataAlteracaoCadastro() + "\n" +
-							"dataAntePenultimaAvaliacao = " + funcionarioAvaliado.getDataAntePenultimaAvaliacao() + "\n" +
-							"dataPenultimaAvaliacao = " + funcionarioAvaliado.getDataPenultimaAvaliacao() + "\n" +
-							"dataUltimaAvaliacao = " + funcionarioAvaliado.getDataUltimaAvaliacao() + "\n" +
-							"dataAntePenultimaVersao = " + funcionarioAvaliado.getDataAntePenultimaVersao() + "\n" +
-							"dataPenultimaVersao = " + funcionarioAvaliado.getDataPenultimaVersao() + "\n" +
-							"dataUltimaVersao = " + funcionarioAvaliado.getDataUltimaVersao() + "\n" +
-							"versaoUltimaAvaliacao = " + funcionarioAvaliado.getVersaoUltimaAvaliacao() + "\n" +
-							"nome = " + funcionarioAvaliado.getNome() + "\n" +
-							"sobrenome = " + funcionarioAvaliado.getSobrenome() + "\n" + 
-							"departamento = " + funcionarioAvaliado.getDepartamento() + "\n" + 
-							"idade = " + funcionarioAvaliado.getIdade() + "\n" + 
-							"sexo = " + funcionarioAvaliado.getSexo();
-			c.write(cadastro);
-			c.close();
+			cadastro.setProperty("dataAntePenultimaVersao", funcionarioAvaliado.getDataAntePenultimaVersao());
+			cadastro.setProperty("dataPenultimaVersao", funcionarioAvaliado.getDataPenultimaVersao());
+			cadastro.setProperty("dataUltimaVersao", funcionarioAvaliado.getDataUltimaVersao());
+			cadastro.setProperty("versaoUltimaAvaliacao", ""+funcionarioAvaliado.getVersaoUltimaAvaliacao());
+			
+			arquivo.close();
 		}catch(IOException io) {
 			
 		}

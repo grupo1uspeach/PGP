@@ -42,12 +42,12 @@ public class TelaInicial extends FramePrincipal {
 	//Variavel para versionamento de avaliacao
 	private int versaoUltimaAvaliacao;
 	
-	//Data das ultimas avaliacoes feitas quando o programa fechou
+	//Data das ultimas avaliacoes feitas quando o programa fechou (avaliacoes finalizadas)
 	private String dataAntePenultimaAvaliacao;
 	private String dataPenultimaAvaliacao;
 	private String dataUltimaAvaliacao;
 	
-	//Tres ultimas versoes da avaliacao para que a pessoa possa dar uma especie de ctrl + z
+	//Guarda as tres ultimas versoes da avaliacao para que a pessoa possa dar uma especie de ctrl + z
 	private String dataAntePenultimaVersao;
 	private String dataPenultimaVersao;
 	private String dataUltimaVersao;
@@ -82,7 +82,7 @@ public class TelaInicial extends FramePrincipal {
 	}
 
 	/****************************************************************************/
-	//Metodo para criar e posicionar os elementos na tela (campos, labels e botoes)
+	//METODO PARA CRIAR E POSICIONAR OS ELEMENTOS NA TELA (CAMPOS, LABELS E BOTOES)
 	private void adicionaComponentes() {
 		//Cria uma lista de labels para inserir posteriormente
 		LinkedList<JLabel> listaLabels = new LinkedList<JLabel>();
@@ -143,7 +143,7 @@ public class TelaInicial extends FramePrincipal {
 	}
 
 	/****************************************************************************/
-	//Metodo auxiliar para inserir os elementos criados no metodo adicionaComponentes
+	//METODO AUXILIAR PARA INSERIR OS ELEMENTOS CRIADOS NO METODO adicionaComponentes
 	protected void insereElementos(LinkedList<JTextField> txtCampo, LinkedList<JLabel> lblCampos) {
 		
 		//Quantidade de campos a serem inseridos
@@ -240,21 +240,21 @@ public class TelaInicial extends FramePrincipal {
 	}
 
 	/****************************************************************************/
-	/*
-	 * ACAO DO BOTAO AVANÇAR VERIFICA SE OS CAMPOS NECESSARIOS FORAM PREENCHIDOS E
-	 * CORRETAMENTE: COD. FUNCIONAL, NOME, SOBRENOME, CAMPOS DE IDADE, SEXO,
-	 * TELEFONE E DEPARTAMENTO ACEITAM SEM PREENCHIMENTO E ? COLOCADO VALOR N/A
-	 * NELES
-	 */
+	//METODO PARA VERIFICAR OS CAMPOS DIGITADOS E INSTANCIAR O OBJETO funcionarioAvaliado
 	public void avancar(java.awt.event.ActionEvent evt) {
 		String nome, sobrenome, departamento, idade, sexo;
 		nome = sobrenome = departamento = idade = sexo = "";
 		try {
 			String codFunc = this.txtCodFunc.getText();
+			//SE O CAMPO CODIGO FUNCIONAL ESTIVER VAZIO, APRESENTA MENSAGEM DE ERRO
 			if (!codFunc.isEmpty()) {
+				//SE O CAMPO CODIGO FUNCIONAL TIVER UM CODIGO VALIDO, VERIFICA SE O FUNCIONARIO TEM CADASTRO
 				String nomePasta = "log/" + codFunc;
 				File pastaFuncionario = new File(nomePasta);
+				
 				if (pastaFuncionario.exists()) {
+					//SE JA HOUVER UMA PASTA PARA O FUNCIONARIO, ABRE O .properties DO FUNCIONARIO E
+					//PEGA AS INFORMACOES DELE PARA INSTANCIAR O OBJETO funcionarioAvaliado
 					Properties cadastro = new Properties();
 					FileInputStream arquivo = new FileInputStream(nomePasta + "/cadastro.properties");
 					cadastro.load(arquivo);
@@ -277,7 +277,8 @@ public class TelaInicial extends FramePrincipal {
 					departamento = cadastro.getProperty("departamento");
 					idade = cadastro.getProperty("idade");
 					sexo = cadastro.getProperty("sexo");
-
+					
+					//Preenche os campos com as informacoes que estao no properties
 					this.txtNome.setText(nome);
 					this.txtSobrenome.setText(sobrenome);
 					this.txtDepto.setText(departamento);
@@ -287,6 +288,9 @@ public class TelaInicial extends FramePrincipal {
 					arquivo.close();
 					
 				} else {
+					
+					//SE NAO HOUVER UMA PASTA PARA O FUNCIONARIO, VERIFICA SE TODAS AS INFORMACOES DIGITADAS SAO VALIDAS E UTILIZA-AS PARA CRIAR 
+					//O CADASTRO DO FUNCIONARIO
 					int resposta = JOptionPane.showConfirmDialog(this,
 							"O funcionario nao possui historico de avaliacao ainda. Deseja continuar?");
 					if (resposta == 0) {
@@ -367,6 +371,7 @@ public class TelaInicial extends FramePrincipal {
 					"Tem certeza que deseja avaliar o funcionario: "+ nome + " " + sobrenome + "?");
 			if (resposta == 0) {
 				
+				//INICIALIZA OS ATRIBUTOS DO FUNCIONARIO
 				funcionarioAvaliado.setDataDeCadastro(dataDeCadastro);
 				funcionarioAvaliado.setDataAlteracaoCadastro(dataAlteracaoCadastro);
 				
