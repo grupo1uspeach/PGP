@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Funcionario {
 
-	private String funcional;
+	private String codigoFuncional;
 	private String nome;
 	private String sobrenome;
 	private String departamento;
@@ -45,11 +45,11 @@ public class Funcionario {
 		this.avaliacaoAdequacaoAsRegras = new ArrayList<Integer>();
 	}
 	
-	public String getFuncional() {
-		return funcional;
+	public String getCodigoFuncional() {
+		return codigoFuncional;
 	}
-	public void setFuncional(String funcional) {
-		this.funcional = funcional;
+	public void setCodigoFuncional(String funcional) {
+		this.codigoFuncional = funcional;
 	}
 	public String getNome() {
 		return nome;

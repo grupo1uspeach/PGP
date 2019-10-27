@@ -379,7 +379,7 @@ public class TelaInicial extends FramePrincipal {
 				funcionarioAvaliado.setDataUltimaVersao(dataUltimaVersao);
 				
 				funcionarioAvaliado.setVersaoUltimaAvaliacao(versaoUltimaAvaliacao);
-				funcionarioAvaliado.setFuncional(codFunc);
+				funcionarioAvaliado.setCodigoFuncional(codFunc);
 				funcionarioAvaliado.setNome(nome);
 				funcionarioAvaliado.setSobrenome(sobrenome);
 				funcionarioAvaliado.setDepartamento(departamento);
@@ -404,7 +404,7 @@ public class TelaInicial extends FramePrincipal {
 	
 	private void inicializaRespostas() {
 		if(funcionarioAvaliado.getVersaoUltimaAvaliacao() != 0) {
-			String nomePasta = "log/" + funcionarioAvaliado.getFuncional();
+			String nomePasta = "log/" + funcionarioAvaliado.getCodigoFuncional();
 			try {
 				Properties avaliacao = new Properties();
 				FileInputStream arquivo = new FileInputStream(nomePasta +  "/" + funcionarioAvaliado.getDataUltimaAvaliacao() + "_avaliacao.properties");

@@ -160,7 +160,7 @@ public abstract class FramePrincipal extends JFrame {
 
 	/****************************************************************************/
 	public void salvar(java.awt.event.ActionEvent evt) {
-		String nomePasta = "log/" + funcionarioAvaliado.getFuncional();
+		String nomePasta = "log/" + funcionarioAvaliado.getCodigoFuncional();
 		
 		funcionarioAvaliado.setDataAntePenultimaVersao(funcionarioAvaliado.getDataPenultimaVersao());
 		funcionarioAvaliado.setDataPenultimaVersao(funcionarioAvaliado.getDataUltimaVersao());
@@ -225,8 +225,9 @@ public abstract class FramePrincipal extends JFrame {
 		try {
 			relatorio.geraRelatorio(lista_func);
 		} catch (JRException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(this, "Nao foi possivel gerar o relatorio");
+
 		}
 
 	}
@@ -240,7 +241,7 @@ public abstract class FramePrincipal extends JFrame {
 		
 		try {
 			
-			String nomePasta = "log/" + funcionarioAvaliado.getFuncional();
+			String nomePasta = "log/" + funcionarioAvaliado.getCodigoFuncional();
 			
 			FileWriter c = new FileWriter(nomePasta + "/cadastro.properties");
 			String cadastro =
