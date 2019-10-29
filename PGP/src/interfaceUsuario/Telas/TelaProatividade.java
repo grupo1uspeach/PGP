@@ -23,7 +23,47 @@ public class TelaProatividade extends FramePrincipal {
 
 	/****************************************************************************/
 	private void adicionaComponentes() {
+		inicializaBotoesFixos(4, new String[] { "Voltar", "Salvar", "Gerar relatório", "Avaliar" });
 		insereBotoesFixos();
+
+		// botao avancar
+		listaBotoesFixos.get(0).addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				voltar(evt);
+			}
+		});
+
+		// botao salvar
+		listaBotoesFixos.get(1).addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				salvar(evt);
+			}
+		});
+
+		// botao gerar relatorio
+		listaBotoesFixos.get(2).addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				geraRelatorio(evt);
+			}
+		});
+
+		// botao avancar
+		listaBotoesFixos.get(3).addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				avancar(evt);
+			}
+		});
+		inserePerguntas(new String[] {
+				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
+						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
+				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
+						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
+				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
+						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
+				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
+						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
+				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
+						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>" });
 	}
 
 	/****************************************************************************/

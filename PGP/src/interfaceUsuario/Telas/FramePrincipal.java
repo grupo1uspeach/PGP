@@ -1,6 +1,7 @@
 package interfaceUsuario.Telas;
 
 import javax.swing.*;
+import javax.swing.plaf.DimensionUIResource;
 
 import beans.Funcionario;
 import net.sf.jasperreports.engine.JRException;
@@ -14,16 +15,16 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 
 public abstract class FramePrincipal extends JFrame {
 
 	protected final Funcionario funcionarioAvaliado;
-	protected JButton btnAvancar;
-	protected JButton btnVoltar;
-	protected JButton btnSalvar;
-	protected JButton btnGerarRelatorio;
+	protected ArrayList<JButton> listaBotoesFixos;
+	protected ArrayList<ButtonGroup> listaPerguntas;
+	protected ArrayList<JLabel> listaLabelPerguntas;
 
 	protected JLabel titulo;
 	protected JLabel periodo;
@@ -38,7 +39,7 @@ public abstract class FramePrincipal extends JFrame {
 	}
 
 	/*****************************************************************************/
-	//Metodo que inicializa os elementos comuns a todas as classes filhas
+	// Metodo que inicializa os elementos comuns a todas as classes filhas
 	protected void initialize() {
 		titulo = new JLabel();
 		titulo.setFont(new Font("Segoe UI Black", Font.BOLD, 30));
@@ -61,7 +62,7 @@ public abstract class FramePrincipal extends JFrame {
 	}
 
 	/*****************************************************************************/
-	//Metodo para alterar o titulo da tela 
+	// Metodo para alterar o titulo da tela
 	protected void setTitulo(String t) {
 		titulo.setText(t);
 		Dimension dimensaopreferida = titulo.getPreferredSize();
@@ -70,110 +71,156 @@ public abstract class FramePrincipal extends JFrame {
 
 	}
 
-	/****************************************************************************/
-	//Metodo para inserir os quatro botoes que sao fixos em todas as telas menos na inicial
-	protected void insereBotoesFixos() {
+	/*****************************************************************************/
+	protected void inicializaBotoesFixos(int qtdBotoes, String[] nomes) {
+		listaBotoesFixos = new ArrayList<JButton>();
 
-		// Inicializa o botao voltar
-		btnVoltar = new JButton("Voltar");
-		btnVoltar.setFont(new Font("Verdana", Font.BOLD, 12));
-		btnVoltar.setForeground(Color.DARK_GRAY);
-		btnVoltar.setBackground(Color.WHITE);
-		Dimension dBtnVoltar = btnVoltar.getPreferredSize();
-
-		// Inicializa o botao salvar
-		btnSalvar = new JButton("Salvar");
-		btnSalvar.setFont(new Font("Verdana", Font.BOLD, 12));
-		btnSalvar.setForeground(Color.DARK_GRAY);
-		btnSalvar.setBackground(Color.WHITE);
-		Dimension dBtnSalvar = btnSalvar.getPreferredSize();
-
-		// Inicializa o botao avancar
-		btnAvancar = new JButton("Avançar");
-		btnAvancar.setFont(new Font("Verdana", Font.BOLD, 12));
-		btnAvancar.setForeground(Color.DARK_GRAY);
-		btnAvancar.setBackground(Color.WHITE);
-		Dimension dBtnAvancar = btnAvancar.getPreferredSize();
-
-		// Inicializa o botao gerarelatorio
-		btnGerarRelatorio = new JButton("Gerar Relatorio");
-		btnGerarRelatorio.setFont(new Font("Verdana", Font.BOLD, 12));
-		btnGerarRelatorio.setForeground(Color.DARK_GRAY);
-		btnGerarRelatorio.setBackground(Color.WHITE);
-		Dimension dBtnGerarRelatorio = btnGerarRelatorio.getPreferredSize();
-
-		// Posiciona o botao voltar
-		int voltarX = (int) (0.12 * width - dBtnVoltar.width);
-		int voltarY = (int) (height - dBtnVoltar.height - 0.12 * height);
-		btnVoltar.setBounds(voltarX, voltarY, dBtnVoltar.width, dBtnVoltar.height);
-		btnVoltar.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				voltar(evt);
-			}
-		});
-		getContentPane().add(btnVoltar);
-
-		// Posiciona o botao avancar
-		int avancarX = (int) (width - voltarX - dBtnAvancar.width);
-		int avancarY = voltarY;
-		btnAvancar.setBounds(avancarX, avancarY, dBtnAvancar.width, dBtnAvancar.height);
-		btnAvancar.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				avancar(evt);
-			}
-		});
-		getContentPane().add(btnAvancar);
-
-		// Posiciona o botao salvar
-		int salvarX = (int) dBtnVoltar.width + (avancarX - (voltarX + dBtnVoltar.width)) / 3;
-		int salvarY = voltarY;
-		dBtnSalvar = btnSalvar.getPreferredSize();
-		btnSalvar.setBounds(salvarX, salvarY, dBtnSalvar.width, dBtnSalvar.height);
-		btnSalvar.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				salvar(evt);
-			}
-		});
-		getContentPane().add(btnSalvar);
-
-		// Posiciona o botao gerarRelatorio
-		int gerarRelatorioX = (int) dBtnVoltar.width + 2 * (avancarX - (voltarX + dBtnVoltar.width)) / 3;
-		int gerarRelatorioY = voltarY;
-		dBtnGerarRelatorio = btnGerarRelatorio.getPreferredSize();
-		btnGerarRelatorio.setBounds(gerarRelatorioX, gerarRelatorioY, dBtnGerarRelatorio.width,
-				dBtnGerarRelatorio.height);
-		btnGerarRelatorio.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				geraRelatorio(evt);
-			}
-		});
-		getContentPane().add(btnGerarRelatorio);
+		for (int i = 0; i < qtdBotoes; i++) {
+			listaBotoesFixos.add(i, new JButton(nomes[i]));
+			listaBotoesFixos.get(i).setFont(new Font("Verdana", Font.BOLD, 12));
+			listaBotoesFixos.get(i).setForeground(Color.DARK_GRAY);
+			listaBotoesFixos.get(i).setBackground(Color.WHITE);
+		}
 	}
 
 	/****************************************************************************/
-	// Cada classe filha deve implementar esse metodo de uma forma diferente, pois chama uma tela diferente
-	public abstract void avancar(java.awt.event.ActionEvent evt);
+	// METODO PARA INSERIR OS QUATRO BOTOES QUE SAO FIXOS EM TODAS AS TELAS MENOS NA INICIAL
+	protected void insereBotoesFixos() {
+		// QUANTIDADE DE CAMPOS A SEREM INSERIDOS
+		int qtdCampos = listaBotoesFixos.size();
 
-	/****************************************************************************/
-	// Cada classe filha deve implementar esse metodo de uma forma diferente, pois chama uma tela diferente
-	public abstract void voltar(java.awt.event.ActionEvent evt);
+		Dimension maiorDimensaoListaBtn = listaBotoesFixos.get(0).getPreferredSize();
+		Dimension dimensaoAtualListaBtn;
 
+		for (int i = 0; i < listaBotoesFixos.size(); i++) {
+			dimensaoAtualListaBtn = listaBotoesFixos.get(i).getPreferredSize();
+			if (dimensaoAtualListaBtn.width > maiorDimensaoListaBtn.width) {
+				dimensaoAtualListaBtn = maiorDimensaoListaBtn;
+			}
+		}
+
+		int posY = 9 * height / 10 - maiorDimensaoListaBtn.height;
+		int posX = width / 10;
+
+		int espacoDisponivel = 9 * width / 10 - 2 * maiorDimensaoListaBtn.width - width / 10;
+
+		int deslocamentoListaBtn = espacoDisponivel / (listaBotoesFixos.size() - 1);
+
+		for (int i = 0; i < listaBotoesFixos.size(); i++) {
+			listaBotoesFixos.get(i).setBounds(posX, posY, 2 * maiorDimensaoListaBtn.width,
+					maiorDimensaoListaBtn.height);
+			getContentPane().add(listaBotoesFixos.get(i));
+			posX += deslocamentoListaBtn;
+		}
+	}
+	
 	/****************************************************************************/
-	//Salva a versao atual das respostas do usuario. Serve para manter as ultimas versoes salvas em disco
-	public void salvar(java.awt.event.ActionEvent evt) {
-		String nomePasta = "log/" + funcionarioAvaliado.getCodigoFuncional();
+	//METODO PARA INSERIR PERGUNTAS COM BASE NO VETOR DE STRINGS COM OS TEXTOS DAS PERGUNTAS
+	protected void inserePerguntas(String[] perguntas) {
 		
+		//CRIA UMA LISTA DE LABELS PARA INSERIR OS TEXTOS DAS PERGUNTAS
+		listaLabelPerguntas = new ArrayList<>();
+		for (int i = 0; i < perguntas.length; i++) {
+			listaLabelPerguntas.add(new JLabel(perguntas[i]));
+			listaLabelPerguntas.get(i).setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		}
+		
+		//ENCONTRA AS DIMENSOES DA MAIOR PERGUNTA
+		Dimension maiorDimensaoListaPerguntas = listaLabelPerguntas.get(0).getPreferredSize();
+		Dimension dimensaoAtualListaPerguntas;
+
+		for (int i = 0; i < listaLabelPerguntas.size(); i++) {
+			dimensaoAtualListaPerguntas = listaLabelPerguntas.get(i).getPreferredSize();
+			if (dimensaoAtualListaPerguntas.width > maiorDimensaoListaPerguntas.width) {
+				dimensaoAtualListaPerguntas = maiorDimensaoListaPerguntas;
+			}
+		}
+
+		//POSICIONA A PRIMEIRA PERGUNTA EM RELACAO AO TITULO
+		int posYLabel = titulo.getY() + this.titulo.getHeight();
+		int posXLabel = this.titulo.getX() + this.titulo.getWidth()/2 - maiorDimensaoListaPerguntas.width/2;
+		
+		//O ESPACO DISPONIVEL EH O ESPACO ENTRE O TITULO E OS BOTOES FIXOS
+		int espacoDisponivelLabel = listaBotoesFixos.get(0).getY() - posYLabel;
+		
+		//O DESLOCAMENTO EH O ESPACO DISPONIVEL DIVIDIDO PELO NUMERO DE BOTOES
+		int deslocamentoListaPerguntasLabel = (espacoDisponivelLabel / (listaLabelPerguntas.size()));
+		
+		
+		int posYBotao, posXBotao, espacoDisponivelBotoes, deslocamentoListaPerguntasBtn;
+		//CRIA UMA LISTA DE JRADIOBUTTONS PARA LINKAR OS BOTOES
+		listaPerguntas = new ArrayList<>();
+		JRadioButton b;
+		b = new JRadioButton("0");
+		Dimension d = new Dimension();
+		Dimension dPerguntaAtual = new Dimension();
+		//LACO PARA COLOCAR AS LABELS NA JANELA, INICIALIZAR OS BOTOES E COLOCA-LOS NA JANELA
+		for (int i = 0; i < perguntas.length; i++) {
+			//CRIA UM GRUPO DE BOTOES PARA INSERIR OS JRADIOBUTTONS DA PERGUNTA ATUAL
+			listaPerguntas.add(new ButtonGroup());
+			
+			dPerguntaAtual = listaLabelPerguntas.get(i).getPreferredSize();
+			//POSICIONA A LABEL DA PERGUNTA
+			listaLabelPerguntas.get(i).setBounds(posXLabel, posYLabel, maiorDimensaoListaPerguntas.width, maiorDimensaoListaPerguntas.height);
+			
+			d = b.getPreferredSize();
+			
+			//ATUALIZA A POSICAO DO PRIMEIRO JRADIOBUTTON
+			posYBotao = posYLabel + dPerguntaAtual.height;
+
+			posXBotao = posXLabel;
+			
+			//O ESPACO DISPONIVEL EH O TAMANHO DA PERGUNTA
+			espacoDisponivelBotoes = maiorDimensaoListaPerguntas.width;
+			deslocamentoListaPerguntasBtn = espacoDisponivelBotoes/5;
+			
+			add(listaLabelPerguntas.get(i));
+			//LACO QUE INICIALIZA OS JRADIOBUTTONS, COLOCA-OS NA TELA E NO GRUPO DE BOTOES
+			for (int j = 0; j < 5; j++) {
+
+				b = new JRadioButton();
+				b.setText("" + (j + 1));
+				d = b.getPreferredSize();
+				b.setBounds(posXBotao, posYBotao, d.width, d.height);
+				add(b);
+				
+				posXBotao += deslocamentoListaPerguntasBtn;
+				
+				listaPerguntas.get(i).add(b);
+
+			}
+			posYLabel += deslocamentoListaPerguntasLabel;
+		}
+	}
+
+	/****************************************************************************/
+	// Cada classe filha deve implementar esse metodo de uma forma diferente, pois
+	// chama uma tela diferente
+	protected abstract void avancar(java.awt.event.ActionEvent evt);
+
+	/****************************************************************************/
+	// Cada classe filha deve implementar esse metodo de uma forma diferente, pois
+	// chama uma tela diferente
+	protected abstract void voltar(java.awt.event.ActionEvent evt);
+
+	/****************************************************************************/
+	// Salva a versao atual das respostas do usuario. Serve para manter as ultimas
+	// versoes salvas em disco
+	protected void salvar(java.awt.event.ActionEvent evt) {
+		String nomePasta = "log/" + funcionarioAvaliado.getCodigoFuncional();
+
 		funcionarioAvaliado.setDataAntePenultimaVersao(funcionarioAvaliado.getDataPenultimaVersao());
 		funcionarioAvaliado.setDataPenultimaVersao(funcionarioAvaliado.getDataUltimaVersao());
-		
+
 		Date date = new Date();
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		String dataUltimaVersao = dateFormat.format(date).replace(":", "-");
 		funcionarioAvaliado.setDataUltimaVersao(dataUltimaVersao);
-		
+
 		try {
-			
-			FileWriter c = new FileWriter(nomePasta + "/" + funcionarioAvaliado.getDataUltimaVersao() + "_avaliacao.properties");
+
+			FileWriter c = new FileWriter(
+					nomePasta + "/" + funcionarioAvaliado.getDataUltimaVersao() + "_avaliacao.properties");
 			String avaliacao = "";
 
 			for (int i = 0; i < funcionarioAvaliado.avaliacaoEntrega.size(); i++) {
@@ -197,12 +244,14 @@ public abstract class FramePrincipal extends JFrame {
 			}
 
 			for (int i = 0; i < funcionarioAvaliado.avaliacaoProatividade.size(); i++) {
-				avaliacao += "proatividade.pergunta" + i + " = " + funcionarioAvaliado.avaliacaoProatividade.get(i) + "\n";
+				avaliacao += "proatividade.pergunta" + i + " = " + funcionarioAvaliado.avaliacaoProatividade.get(i)
+						+ "\n";
 
 			}
 
 			for (int i = 0; i < funcionarioAvaliado.avaliacaoAdequacaoAsRegras.size(); i++) {
-				avaliacao += "adequacaoAsRegras.pergunta" + i + " = " + funcionarioAvaliado.avaliacaoEntrega.get(i) + "\n";
+				avaliacao += "adequacaoAsRegras.pergunta" + i + " = " + funcionarioAvaliado.avaliacaoEntrega.get(i)
+						+ "\n";
 			}
 
 			c.write(avaliacao);
@@ -216,11 +265,12 @@ public abstract class FramePrincipal extends JFrame {
 	}
 
 	/****************************************************************************/
-	//Salva o relatorio na pasta do funcionario e exibe o relatorio em tela que o usuario tambem tenha a opcao de conferir os dados e salvar em outro lugar
+	// Salva o relatorio na pasta do funcionario e exibe o relatorio em tela que o
+	// usuario tambem tenha a opcao de conferir os dados e salvar em outro lugar
 	protected void geraRelatorio(java.awt.event.ActionEvent evt) {
-        
+
 		List<Funcionario> lista_func = new ArrayList<Funcionario>();
-		
+
 		lista_func.add(funcionarioAvaliado);
 		Relatorio relatorio = new Relatorio();
 		try {
@@ -232,9 +282,10 @@ public abstract class FramePrincipal extends JFrame {
 		}
 
 	}
-	
+
 	/****************************************************************************/
-	//Alem de salvar a versao atual, atualiza no arquivo de cadastro, qual foi a ultima versao finalizada
+	// Alem de salvar a versao atual, atualiza no arquivo de cadastro, qual foi a
+	// ultima versao finalizada
 	protected void encerrar() {
 		salvar(null);
 		String nomePasta = "log/" + funcionarioAvaliado.getCodigoFuncional();
@@ -243,30 +294,28 @@ public abstract class FramePrincipal extends JFrame {
 		funcionarioAvaliado.setDataAntePenultimaAvaliacao(funcionarioAvaliado.getDataPenultimaAvaliacao());
 		funcionarioAvaliado.setDataPenultimaAvaliacao(funcionarioAvaliado.getDataUltimaAvaliacao());
 		funcionarioAvaliado.setDataUltimaAvaliacao(funcionarioAvaliado.getDataUltimaVersao());
-		
+
 		try {
-			
+
 			Properties cadastro = new Properties();
 			FileInputStream arquivo = new FileInputStream(nomePasta + "/cadastro.properties");
 			cadastro.load(arquivo);
-			
+
 			cadastro.setProperty("dataAntePenultimaVersao", funcionarioAvaliado.getDataAntePenultimaVersao());
 			cadastro.setProperty("dataPenultimaVersao", funcionarioAvaliado.getDataPenultimaVersao());
 			cadastro.setProperty("dataUltimaVersao", funcionarioAvaliado.getDataUltimaVersao());
-			cadastro.setProperty("versaoUltimaAvaliacao", ""+funcionarioAvaliado.getVersaoUltimaAvaliacao());
-			
+			cadastro.setProperty("versaoUltimaAvaliacao", "" + funcionarioAvaliado.getVersaoUltimaAvaliacao());
+
 			arquivo.close();
-		}catch(IOException io) {
-			
+		} catch (IOException io) {
+
 		}
 	}
-	
+
 	/****************************************************************************/
 
 	protected void listaVersoes() {
 		ArrayList<JMenuItem> listaVersoes = new ArrayList<JMenuItem>();
-		
-		
 
 	}
 

@@ -38,22 +38,23 @@ public class TelaInicial extends FramePrincipal {
 	private JComboBox<String> sexo;
 
 	private String dataDeCadastro;
-	
-	//Variavel para versionamento de avaliacao
+
+	// Variavel para versionamento de avaliacao
 	private int versaoUltimaAvaliacao;
-	
-	//Data das ultimas avaliacoes feitas quando o programa fechou (avaliacoes finalizadas)
+
+	// Data das ultimas avaliacoes feitas quando o programa fechou (avaliacoes
+	// finalizadas)
 	private String dataAntePenultimaAvaliacao;
 	private String dataPenultimaAvaliacao;
 	private String dataUltimaAvaliacao;
-	
-	//Guarda as tres ultimas versoes da avaliacao para que a pessoa possa dar uma especie de ctrl + z
+
+	// Guarda as tres ultimas versoes da avaliacao para que a pessoa possa dar uma
+	// especie de ctrl + z
 	private String dataAntePenultimaVersao;
 	private String dataPenultimaVersao;
 	private String dataUltimaVersao;
 	private String dataAlteracaoCadastro;
 
-	
 	private ValidaCampos valida = new ValidaCampos();
 	private final int qtdPerguntasEntrega;
 	private final int qtdPerguntasMetas;
@@ -61,57 +62,57 @@ public class TelaInicial extends FramePrincipal {
 	private final int qtdPerguntasHabilidadesSociais;
 	private final int qtdPerguntasProatividade;
 	private final int qtdPerguntasAdequacaoAsRegras;
-	
+
 	/****************************************************************************/
 	public TelaInicial() {
 		super(new Funcionario());
-		
+
 		qtdPerguntasEntrega = 2;
 		qtdPerguntasMetas = 2;
 		qtdPerguntasHabilidadesPessoais = 2;
-		qtdPerguntasHabilidadesSociais  = 2;
+		qtdPerguntasHabilidadesSociais = 2;
 		qtdPerguntasProatividade = 2;
 		qtdPerguntasAdequacaoAsRegras = 2;
-		
+
 		this.height = 600;
 		this.width = 700;
 		initialize();
 		setTitulo("Funcionario Avaliado");
 		adicionaComponentes();
-		
+
 	}
 
 	/****************************************************************************/
-	//METODO PARA CRIAR E POSICIONAR OS ELEMENTOS NA TELA (CAMPOS, LABELS E BOTOES)
+	// METODO PARA CRIAR E POSICIONAR OS ELEMENTOS NA TELA (CAMPOS, LABELS E BOTOES)
 	private void adicionaComponentes() {
-		//Cria uma lista de labels para inserir posteriormente
+		// Cria uma lista de labels para inserir posteriormente
 		LinkedList<JLabel> listaLabels = new LinkedList<JLabel>();
-		
-		//Label do campo codigo funcional
+
+		// Label do campo codigo funcional
 		listaLabels.add(new JLabel("Cod. Funcional:"));
 		listaLabels.get(0).setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
-		//Label do campo nome
+		// Label do campo nome
 		listaLabels.add(new JLabel("Nome:"));
 		listaLabels.get(1).setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
-		//Label do campo sobrenome
+		// Label do campo sobrenome
 		listaLabels.add(new JLabel("Sobrenome:"));
 		listaLabels.get(2).setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
-		//Label do campo departamento
+		// Label do campo departamento
 		listaLabels.add(new JLabel("Departamento:"));
 		listaLabels.get(3).setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
-		//Label do campo idade
+		// Label do campo idade
 		listaLabels.add(new JLabel("Idade:"));
 		listaLabels.get(4).setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
-		//Label do campo sexo
+		// Label do campo sexo
 		listaLabels.add(new JLabel("Sexo:"));
 		listaLabels.get(5).setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		
-		//Cria uma lista de caixas de texto para inserir posteriormente
+
+		// Cria uma lista de caixas de texto para inserir posteriormente
 		LinkedList<JTextField> listaCampos = new LinkedList<JTextField>();
 
 		// Caixa de texto Cod. Funcional
@@ -128,7 +129,7 @@ public class TelaInicial extends FramePrincipal {
 		listaCampos.add(this.txtSobrenome = new JTextField());
 		listaCampos.get(2).setColumns(10);
 		listaCampos.get(2).setDocument(new SoLetras(25));
-		
+
 		// Caixa de texto Departamento
 		listaCampos.add(this.txtDepto = new JTextField());
 		listaCampos.get(3).setColumns(10);
@@ -143,33 +144,33 @@ public class TelaInicial extends FramePrincipal {
 	}
 
 	/****************************************************************************/
-	//METODO AUXILIAR PARA INSERIR OS ELEMENTOS CRIADOS NO METODO adicionaComponentes
+	// METODO AUXILIAR PARA INSERIR OS ELEMENTOS CRIADOS NO METODO
+	// adicionaComponentes
 	protected void insereElementos(LinkedList<JTextField> txtCampo, LinkedList<JLabel> lblCampos) {
-		
-		//Quantidade de campos a serem inseridos
+
+		// Quantidade de campos a serem inseridos
 		int qtdCampos = lblCampos.size();
-		
+
 		Dimension maiorDimensaoLbl = lblCampos.get(0).getPreferredSize();
 		Dimension dimensaoAtualLbl;
-		
+
 		Dimension maiorDimensaoTxt = lblCampos.get(0).getPreferredSize();
 		Dimension dimensaoAtualTxt;
 
 		for (int y = 0; y < qtdCampos; y++) {
-			
-			//Encontra a dimensao da maior label a ser inserida
+
+			// Encontra a dimensao da maior label a ser inserida
 			dimensaoAtualLbl = lblCampos.get(y).getPreferredSize();
 			if (dimensaoAtualLbl.width > maiorDimensaoLbl.width) {
 				dimensaoAtualLbl = maiorDimensaoLbl;
 			}
 
-			//Encontra a dimensao do maior campo de texto a ser inserido
+			// Encontra a dimensao do maior campo de texto a ser inserido
 			dimensaoAtualTxt = lblCampos.get(y).getPreferredSize();
 			if (dimensaoAtualTxt.width > maiorDimensaoTxt.width) {
 				dimensaoAtualTxt = maiorDimensaoTxt;
 			}
 		}
-		
 
 		int alturaLbl = maiorDimensaoLbl.height;
 		int espacoDisponivel = height - titulo.getY() - this.titulo.getHeight();
@@ -184,7 +185,8 @@ public class TelaInicial extends FramePrincipal {
 		int deslocamentoLbl = this.titulo.getY() / 2;
 		int deslocamentoTxt = titulo.getY() / 2;
 
-		//Laco para inserir os campos e labels em posicoes relativas uns aos outros e ao titulo da tela
+		// Laco para inserir os campos e labels em posicoes relativas uns aos outros e
+		// ao titulo da tela
 		for (int campo = 0; campo < qtdCampos; campo++) {
 
 			deslocamentoLbl += lblY;
@@ -210,66 +212,59 @@ public class TelaInicial extends FramePrincipal {
 			}
 			deslocamentoTxt += (alturaTxt + alturaLbl) / 2;
 		}
-		
-		//Posiciona o botao avancar
-		btnAvancar = new JButton("Avançar");
-		btnAvancar.setFont(new Font("Verdana", Font.BOLD, 12));
-		btnAvancar.setForeground(Color.DARK_GRAY);
-		btnAvancar.setBackground(Color.WHITE);
-		Dimension dBtn = btnAvancar.getPreferredSize();
-		btnAvancar.setBounds( (int)(width - dBtn.width - 0.05*width), (int) (height - dBtn.height - 0.12*height), dBtn.width, dBtn.height);
-		btnAvancar.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				avancar(evt);
-			}
-		});
-		getContentPane().add(btnAvancar);
-		
-		btnVoltar = new JButton("Sair");
-		btnVoltar.setFont(new Font("Verdana", Font.BOLD, 12));
-		btnVoltar.setForeground(Color.DARK_GRAY);
-		btnVoltar.setBackground(Color.WHITE);
-		dBtn = btnVoltar.getPreferredSize();
-		btnVoltar.setBounds( (int)(0.12*width - dBtn.width), (int) (height - dBtn.height - 0.12*height), dBtn.width, dBtn.height);
-		btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+
+		inicializaBotoesFixos(2, new String[] { "Sair", "Avaliar" });
+		insereBotoesFixos();
+
+		// botao avancar
+		listaBotoesFixos.get(0).addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				voltar(evt);
 			}
 		});
-		getContentPane().add(btnVoltar);
+
+		// botao avancar
+		listaBotoesFixos.get(1).addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				avancar(evt);
+			}
+		});
 	}
 
 	/****************************************************************************/
-	//METODO PARA VERIFICAR OS CAMPOS DIGITADOS E INSTANCIAR O OBJETO funcionarioAvaliado
+	// METODO PARA VERIFICAR OS CAMPOS DIGITADOS E INSTANCIAR O OBJETO
+	// funcionarioAvaliado
 	public void avancar(java.awt.event.ActionEvent evt) {
 		String nome, sobrenome, departamento, idade, sexo;
 		nome = sobrenome = departamento = idade = sexo = "";
 		try {
 			String codFunc = this.txtCodFunc.getText();
-			//SE O CAMPO CODIGO FUNCIONAL ESTIVER VAZIO, APRESENTA MENSAGEM DE ERRO
+			// SE O CAMPO CODIGO FUNCIONAL ESTIVER VAZIO, APRESENTA MENSAGEM DE ERRO
 			if (!codFunc.isEmpty()) {
-				//SE O CAMPO CODIGO FUNCIONAL TIVER UM CODIGO VALIDO, VERIFICA SE O FUNCIONARIO TEM CADASTRO
+				// SE O CAMPO CODIGO FUNCIONAL TIVER UM CODIGO VALIDO, VERIFICA SE O FUNCIONARIO
+				// TEM CADASTRO
 				String nomePasta = "log/" + codFunc;
 				File pastaFuncionario = new File(nomePasta);
-				
+
 				if (pastaFuncionario.exists()) {
-					//SE JA HOUVER UMA PASTA PARA O FUNCIONARIO, ABRE O .properties DO FUNCIONARIO E
-					//PEGA AS INFORMACOES DELE PARA INSTANCIAR O OBJETO funcionarioAvaliado
+					// SE JA HOUVER UMA PASTA PARA O FUNCIONARIO, ABRE O .properties DO FUNCIONARIO
+					// E
+					// PEGA AS INFORMACOES DELE PARA INSTANCIAR O OBJETO funcionarioAvaliado
 					Properties cadastro = new Properties();
 					FileInputStream arquivo = new FileInputStream(nomePasta + "/cadastro.properties");
 					cadastro.load(arquivo);
-					
+
 					dataDeCadastro = cadastro.getProperty("dataDeCadastro");
 					dataAlteracaoCadastro = cadastro.getProperty("dataAlteracaoCadastro");
-					
+
 					dataAntePenultimaAvaliacao = cadastro.getProperty("dataAntePenultimaAvaliacao");
 					dataPenultimaAvaliacao = cadastro.getProperty("dataPenultimaAvaliacao");
 					dataUltimaAvaliacao = cadastro.getProperty("dataUltimaAvaliacao");
-					
+
 					dataAntePenultimaVersao = cadastro.getProperty("dataAntePenultimaVersao");
 					dataPenultimaVersao = cadastro.getProperty("dataPenultimaVersao");
 					dataUltimaVersao = cadastro.getProperty("dataUltimaVersao");
-					
+
 					versaoUltimaAvaliacao = Integer.parseInt(cadastro.getProperty("versaoUltimaAvaliacao"));
 
 					nome = cadastro.getProperty("nome");
@@ -277,20 +272,21 @@ public class TelaInicial extends FramePrincipal {
 					departamento = cadastro.getProperty("departamento");
 					idade = cadastro.getProperty("idade");
 					sexo = cadastro.getProperty("sexo");
-					
-					//Preenche os campos com as informacoes que estao no properties
+
+					// Preenche os campos com as informacoes que estao no properties
 					this.txtNome.setText(nome);
 					this.txtSobrenome.setText(sobrenome);
 					this.txtDepto.setText(departamento);
 					this.txtIdade.setText(idade);
 					this.sexo.setSelectedItem(sexo);
-					
+
 					arquivo.close();
-					
+
 				} else {
-					
-					//SE NAO HOUVER UMA PASTA PARA O FUNCIONARIO, VERIFICA SE TODAS AS INFORMACOES DIGITADAS SAO VALIDAS E UTILIZA-AS PARA CRIAR 
-					//O CADASTRO DO FUNCIONARIO
+
+					// SE NAO HOUVER UMA PASTA PARA O FUNCIONARIO, VERIFICA SE TODAS AS INFORMACOES
+					// DIGITADAS SAO VALIDAS E UTILIZA-AS PARA CRIAR
+					// O CADASTRO DO FUNCIONARIO
 					int resposta = JOptionPane.showConfirmDialog(this,
 							"O funcionario nao possui historico de avaliacao ainda. Deseja continuar?");
 					if (resposta == 0) {
@@ -301,8 +297,7 @@ public class TelaInicial extends FramePrincipal {
 						idade = this.txtIdade.getText();
 						sexo = this.sexo.getSelectedItem().toString();
 						versaoUltimaAvaliacao = 0;
-						
-						
+
 						// VERIFICACAO IMPORTANTE
 						if (nome.isEmpty()) {
 							JOptionPane.showMessageDialog(this, "Nome esta vazio!");
@@ -324,65 +319,59 @@ public class TelaInicial extends FramePrincipal {
 						if (sexo.isEmpty())
 							sexo = "Nao preenchido";
 
-						Date date = Calendar.getInstance().getTime();  
+						Date date = Calendar.getInstance().getTime();
 						DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 						dataUltimaAvaliacao = dateFormat.format(date).replace(":", "-");
-						
+
 						dataDeCadastro = dataUltimaAvaliacao;
 						dataAlteracaoCadastro = dataUltimaAvaliacao;
-						
+
 						dataAntePenultimaAvaliacao = dataUltimaAvaliacao;
 						dataPenultimaAvaliacao = dataUltimaAvaliacao;
-						
+
 						dataAntePenultimaVersao = dataUltimaAvaliacao;
 						dataPenultimaVersao = dataUltimaAvaliacao;
 						dataUltimaVersao = dataUltimaAvaliacao;
-						
-						
+
 						pastaFuncionario.mkdirs();
 						FileWriter c = new FileWriter(nomePasta + "/cadastro.properties");
-						String cadastro =
-								"dataDeCadastro = " + dataUltimaAvaliacao + "\n" +
-								"dataAlteracaoCadastro = " + dataUltimaAvaliacao + "\n" +
-								"dataAntePenultimaAvaliacao = " + dataUltimaAvaliacao + "\n" +
-								"dataPenultimaAvaliacao = " + dataUltimaAvaliacao + "\n" +
-								"dataUltimaAvaliacao = " + dataUltimaAvaliacao + "\n" +
-								"dataAntePenultimaVersao = " + dataUltimaAvaliacao + "\n" +
-								"dataPenultimaVersao = " + dataUltimaAvaliacao + "\n" +
-								"dataUltimaVersao = " + dataUltimaAvaliacao + "\n" +
-								"versaoUltimaAvaliacao = " + versaoUltimaAvaliacao + "\n" +
-								"nome = " + nome + "\n" +
-								"sobrenome = " + sobrenome + "\n" + 
-								"departamento = " + departamento + "\n" + 
-								"idade = " + idade + "\n" + 
-								"sexo = " + sexo;
+						String cadastro = "dataDeCadastro = " + dataUltimaAvaliacao + "\n" + "dataAlteracaoCadastro = "
+								+ dataUltimaAvaliacao + "\n" + "dataAntePenultimaAvaliacao = " + dataUltimaAvaliacao
+								+ "\n" + "dataPenultimaAvaliacao = " + dataUltimaAvaliacao + "\n"
+								+ "dataUltimaAvaliacao = " + dataUltimaAvaliacao + "\n" + "dataAntePenultimaVersao = "
+								+ dataUltimaAvaliacao + "\n" + "dataPenultimaVersao = " + dataUltimaAvaliacao + "\n"
+								+ "dataUltimaVersao = " + dataUltimaAvaliacao + "\n" + "versaoUltimaAvaliacao = "
+								+ versaoUltimaAvaliacao + "\n" + "nome = " + nome + "\n" + "sobrenome = " + sobrenome
+								+ "\n" + "departamento = " + departamento + "\n" + "idade = " + idade + "\n" + "sexo = "
+								+ sexo;
 						c.write(cadastro);
 						c.close();
 
-					} else return;
+					} else
+						return;
 				}
 
 			} else {
 				JOptionPane.showMessageDialog(this, "Codigo funcional esta vazio!");
 				return;
 			}
-			
+
 			int resposta = JOptionPane.showConfirmDialog(this,
-					"Tem certeza que deseja avaliar o funcionario: "+ nome + " " + sobrenome + "?");
+					"Tem certeza que deseja avaliar o funcionario: " + nome + " " + sobrenome + "?");
 			if (resposta == 0) {
-				
-				//INICIALIZA OS ATRIBUTOS DO FUNCIONARIO
+
+				// INICIALIZA OS ATRIBUTOS DO FUNCIONARIO
 				funcionarioAvaliado.setDataDeCadastro(dataDeCadastro);
 				funcionarioAvaliado.setDataAlteracaoCadastro(dataAlteracaoCadastro);
-				
+
 				funcionarioAvaliado.setDataAntePenultimaAvaliacao(dataAntePenultimaAvaliacao);
 				funcionarioAvaliado.setDataPenultimaAvaliacao(dataPenultimaAvaliacao);
 				funcionarioAvaliado.setDataUltimaAvaliacao(dataUltimaAvaliacao);
-				
+
 				funcionarioAvaliado.setDataAntePenultimaVersao(dataAntePenultimaVersao);
 				funcionarioAvaliado.setDataPenultimaVersao(dataPenultimaVersao);
 				funcionarioAvaliado.setDataUltimaVersao(dataUltimaVersao);
-				
+
 				funcionarioAvaliado.setVersaoUltimaAvaliacao(versaoUltimaAvaliacao);
 				funcionarioAvaliado.setCodigoFuncional(codFunc);
 				funcionarioAvaliado.setNome(nome);
@@ -390,9 +379,9 @@ public class TelaInicial extends FramePrincipal {
 				funcionarioAvaliado.setDepartamento(departamento);
 				funcionarioAvaliado.setIdade(idade);
 				funcionarioAvaliado.setSexo(sexo);
-				
+
 				inicializaRespostas();
-				
+
 				JFrame telaEntrega = InterfaceController.controlaTelas("TelaEntrega", funcionarioAvaliado);
 				telaEntrega.setVisible(true);
 				dispose();
@@ -406,37 +395,44 @@ public class TelaInicial extends FramePrincipal {
 		}
 
 	}
-	
+
 	private void inicializaRespostas() {
-		if(funcionarioAvaliado.getVersaoUltimaAvaliacao() != 0) {
+		if (funcionarioAvaliado.getVersaoUltimaAvaliacao() != 0) {
 			String nomePasta = "log/" + funcionarioAvaliado.getCodigoFuncional();
 			try {
 				Properties avaliacao = new Properties();
-				FileInputStream arquivo = new FileInputStream(nomePasta +  "/" + funcionarioAvaliado.getDataUltimaAvaliacao() + "_avaliacao.properties");
+				FileInputStream arquivo = new FileInputStream(
+						nomePasta + "/" + funcionarioAvaliado.getDataUltimaAvaliacao() + "_avaliacao.properties");
 				avaliacao.load(arquivo);
 
 				for (int i = 0; i < qtdPerguntasEntrega; i++) {
-					funcionarioAvaliado.avaliacaoEntrega.add(Integer.parseInt(avaliacao.getProperty("entrega.pergunta" + i)));
+					funcionarioAvaliado.avaliacaoEntrega
+							.add(Integer.parseInt(avaliacao.getProperty("entrega.pergunta" + i)));
 				}
 
 				for (int i = 0; i < qtdPerguntasMetas; i++) {
-					funcionarioAvaliado.avaliacaoMetas.add(Integer.parseInt(avaliacao.getProperty("meta.pergunta" + i)));
+					funcionarioAvaliado.avaliacaoMetas
+							.add(Integer.parseInt(avaliacao.getProperty("meta.pergunta" + i)));
 				}
 
 				for (int i = 0; i < qtdPerguntasHabilidadesPessoais; i++) {
-					funcionarioAvaliado.avaliacaoHabilidadesPessoais.add(Integer.parseInt(avaliacao.getProperty("habilidadesPessoais.pergunta" + i)));
+					funcionarioAvaliado.avaliacaoHabilidadesPessoais
+							.add(Integer.parseInt(avaliacao.getProperty("habilidadesPessoais.pergunta" + i)));
 				}
 
 				for (int i = 0; i < qtdPerguntasHabilidadesSociais; i++) {
-					funcionarioAvaliado.avaliacaoHabilidadesSociais.add(Integer.parseInt(avaliacao.getProperty("habilidadesSociais.pergunta" + i)));
+					funcionarioAvaliado.avaliacaoHabilidadesSociais
+							.add(Integer.parseInt(avaliacao.getProperty("habilidadesSociais.pergunta" + i)));
 				}
 
 				for (int i = 0; i < qtdPerguntasProatividade; i++) {
-					funcionarioAvaliado.avaliacaoProatividade.add(Integer.parseInt(avaliacao.getProperty("proatividade.pergunta" + i)));
+					funcionarioAvaliado.avaliacaoProatividade
+							.add(Integer.parseInt(avaliacao.getProperty("proatividade.pergunta" + i)));
 				}
 
 				for (int i = 0; i < qtdPerguntasAdequacaoAsRegras; i++) {
-					funcionarioAvaliado.avaliacaoAdequacaoAsRegras.add(Integer.parseInt(avaliacao.getProperty("adequacaoAsRegras.pergunta" + i)));
+					funcionarioAvaliado.avaliacaoAdequacaoAsRegras
+							.add(Integer.parseInt(avaliacao.getProperty("adequacaoAsRegras.pergunta" + i)));
 				}
 
 				arquivo.close();
@@ -445,7 +441,7 @@ public class TelaInicial extends FramePrincipal {
 				JOptionPane.showMessageDialog(this, "Nao foi possivel salvar a avaliacao do funcionario");
 			}
 
-		}else {
+		} else {
 			for (int i = 0; i < qtdPerguntasEntrega; i++) {
 				funcionarioAvaliado.avaliacaoEntrega.add(i);
 			}
@@ -474,8 +470,8 @@ public class TelaInicial extends FramePrincipal {
 
 	/****************************************************************************/
 	public void voltar(java.awt.event.ActionEvent evt) {
-		
-		//Perguntar se a pessoa tem ctz que quer sair
+
+		// Perguntar se a pessoa tem ctz que quer sair
 		int encerrarAvaliacao = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja sair?");
 		if (encerrarAvaliacao == 0) {
 			dispose();
