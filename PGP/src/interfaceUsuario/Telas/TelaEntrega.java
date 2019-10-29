@@ -18,7 +18,7 @@ public class TelaEntrega extends FramePrincipal {
 
 	/****************************************************************************/
 	private void adicionaComponentes() {
-		inicializaBotoesFixos(4, new String[] { "Voltar", "Salvar", "Gerar relatório", "Avaliar" });
+		inicializaBotoesFixos(4, new String[] { "Voltar", "Salvar", "Gerar relatório", "Avancar" });
 		insereBotoesFixos();
 
 		// botao avancar
