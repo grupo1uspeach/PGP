@@ -184,6 +184,7 @@ public abstract class FramePrincipal extends JFrame {
 				b = new JRadioButton();
 				listaBotoesPerguntas.get(i).add(b);
 				b.setText("" + (j + 1));
+				b.setBackground(getForeground());
 				b.setActionCommand("" + (j + 1));
 				d = b.getPreferredSize();
 				
@@ -274,7 +275,7 @@ public abstract class FramePrincipal extends JFrame {
 	// Salva o relatorio na pasta do funcionario e exibe o relatorio em tela que o
 	// usuario tambem tenha a opcao de conferir os dados e salvar em outro lugar
 	protected void geraRelatorio(java.awt.event.ActionEvent evt) {
-
+		funcionarioAvaliado.atualizaStrings();
 		List<Funcionario> lista_func = new ArrayList<Funcionario>();
 
 		lista_func.add(funcionarioAvaliado);

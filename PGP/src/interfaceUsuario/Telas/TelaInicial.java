@@ -31,6 +31,7 @@ public class TelaInicial extends FramePrincipal {
 	private JTextField txtCodFunc;
 	private JTextField txtNome;
 	private JTextField txtSobrenome;
+	private JTextField txtCargo;
 	private JTextField txtDepto;
 	private JTextField txtIdade;
 	private JComboBox<String> sexo;
@@ -97,18 +98,22 @@ public class TelaInicial extends FramePrincipal {
 		// Label do campo sobrenome
 		listaLabels.add(new JLabel("Sobrenome:"));
 		listaLabels.get(2).setFont(new Font("Segoe UI", Font.PLAIN, 13));
+		
+		// Label do campo departamento
+		listaLabels.add(new JLabel("Cargo:"));
+		listaLabels.get(3).setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
 		// Label do campo departamento
 		listaLabels.add(new JLabel("Departamento:"));
-		listaLabels.get(3).setFont(new Font("Segoe UI", Font.PLAIN, 13));
+		listaLabels.get(4).setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
 		// Label do campo idade
 		listaLabels.add(new JLabel("Idade:"));
-		listaLabels.get(4).setFont(new Font("Segoe UI", Font.PLAIN, 13));
+		listaLabels.get(5).setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
 		// Label do campo sexo
 		listaLabels.add(new JLabel("Sexo:"));
-		listaLabels.get(5).setFont(new Font("Segoe UI", Font.PLAIN, 13));
+		listaLabels.get(6).setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
 		// Cria uma lista de caixas de texto para inserir posteriormente
 		LinkedList<JTextField> listaCampos = new LinkedList<JTextField>();
@@ -127,16 +132,21 @@ public class TelaInicial extends FramePrincipal {
 		listaCampos.add(this.txtSobrenome = new JTextField());
 		listaCampos.get(2).setColumns(10);
 		listaCampos.get(2).setDocument(new SoLetras(25));
-
+		
 		// Caixa de texto Departamento
-		listaCampos.add(this.txtDepto = new JTextField());
+		listaCampos.add(this.txtCargo = new JTextField());
 		listaCampos.get(3).setColumns(10);
 		listaCampos.get(3).setDocument(new SoLetras(25));
 
+		// Caixa de texto Departamento
+		listaCampos.add(this.txtDepto = new JTextField());
+		listaCampos.get(4).setColumns(10);
+		listaCampos.get(4).setDocument(new SoLetras(25));
+
 		// Caixa de texto Idade
 		listaCampos.add(this.txtIdade = new JTextField());
-		listaCampos.get(4).setColumns(10);
-		listaCampos.get(4).setDocument(new SoNumeros(2));
+		listaCampos.get(5).setColumns(10);
+		listaCampos.get(5).setDocument(new SoNumeros(2));
 
 		insereElementos(listaCampos, listaLabels);
 	}
@@ -193,7 +203,7 @@ public class TelaInicial extends FramePrincipal {
 			deslocamentoLbl += alturaLbl;
 
 			deslocamentoTxt += (txtY + lblY) / 2;
-			if (campo != 5) {
+			if (campo != 6) {
 				txtCampo.get(campo).setBounds(txtX, deslocamentoTxt, 2 * maiorDimensaoTxt.width,
 						maiorDimensaoTxt.height);
 				getContentPane().add(txtCampo.get(campo));
@@ -233,8 +243,8 @@ public class TelaInicial extends FramePrincipal {
 	// METODO PARA VERIFICAR OS CAMPOS DIGITADOS E INSTANCIAR O OBJETO
 	// funcionarioAvaliado
 	public void avancar(java.awt.event.ActionEvent evt) {
-		String nome, sobrenome, departamento, idade, sexo;
-		nome = sobrenome = departamento = idade = sexo = "";
+		String nome, sobrenome, cargo, departamento, idade, sexo;
+		nome = sobrenome = cargo = departamento = idade = sexo = "";
 		try {
 			String codFunc = this.txtCodFunc.getText();
 			// SE O CAMPO CODIGO FUNCIONAL ESTIVER VAZIO, APRESENTA MENSAGEM DE ERRO
@@ -267,6 +277,7 @@ public class TelaInicial extends FramePrincipal {
 
 					nome = cadastro.getProperty("nome");
 					sobrenome = cadastro.getProperty("sobrenome");
+					cargo = cadastro.getProperty("cargo");
 					departamento = cadastro.getProperty("departamento");
 					idade = cadastro.getProperty("idade");
 					sexo = cadastro.getProperty("sexo");
@@ -274,6 +285,7 @@ public class TelaInicial extends FramePrincipal {
 					// Preenche os campos com as informacoes que estao no properties
 					this.txtNome.setText(nome);
 					this.txtSobrenome.setText(sobrenome);
+					this.txtCargo.setText(cargo);
 					this.txtDepto.setText(departamento);
 					this.txtIdade.setText(idade);
 					this.sexo.setSelectedItem(sexo);
@@ -291,6 +303,7 @@ public class TelaInicial extends FramePrincipal {
 
 						nome = this.txtNome.getText();
 						sobrenome = this.txtSobrenome.getText();
+						cargo = this.txtCargo.getText();
 						departamento = this.txtDepto.getText();
 						idade = this.txtIdade.getText();
 						sexo = this.sexo.getSelectedItem().toString();
@@ -340,8 +353,8 @@ public class TelaInicial extends FramePrincipal {
 								+ dataUltimaAvaliacao + "\n" + "dataPenultimaVersao = " + dataUltimaAvaliacao + "\n"
 								+ "dataUltimaVersao = " + dataUltimaAvaliacao + "\n" + "versaoUltimaAvaliacao = "
 								+ versaoUltimaAvaliacao + "\n" + "nome = " + nome + "\n" + "sobrenome = " + sobrenome
-								+ "\n" + "departamento = " + departamento + "\n" + "idade = " + idade + "\n" + "sexo = "
-								+ sexo;
+								+ "\n" + "cargo = " + cargo + "\n" + "departamento = " + departamento 
+								+ "\n" + "idade = " + idade + "\n" + "sexo = " + sexo;
 						c.write(cadastro);
 						c.close();
 

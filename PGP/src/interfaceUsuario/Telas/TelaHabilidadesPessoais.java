@@ -50,16 +50,11 @@ public class TelaHabilidadesPessoais extends FramePrincipal {
 			}
 		});
 		inserePerguntas(new String[] {
-				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
-						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
-				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
-						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
-				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
-						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
-				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
-						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
-				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
-						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>" });
+				"<html><body>Baseia-se na dependência mútua e compreensão</body></html>",
+				"<html><body>Responde rapidamente a novas instruções, situações, métodos e procedimentos</body></html>",
+				"<html><body>Demonstra habilidade de aprender e adaptar-se rapidamente às mudanças de situação</body></html>",
+				"<html><body>Compartilha experiências de aprendizado com os colegas</body></html>",
+				"<html><body>Se comunica de maneira clara e objetiva com seus colegas</body></html>" });
 		preencheRespostas();
 	}
 
