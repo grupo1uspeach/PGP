@@ -25,6 +25,7 @@ public abstract class FramePrincipal extends JFrame {
 	protected ArrayList<JButton> listaBotoesFixos;
 	protected ArrayList<ButtonGroup> listaPerguntas;
 	protected ArrayList<JLabel> listaLabelPerguntas;
+	protected ArrayList<ArrayList<JRadioButton>> listaBotoesPerguntas;
 
 	protected JLabel titulo;
 	protected JLabel periodo;
@@ -49,7 +50,7 @@ public abstract class FramePrincipal extends JFrame {
 		menuBar = new JMenuBar();
 		sair = new JMenu();
 
-		getContentPane().setBackground(new Color(204, 255, 153));
+		getContentPane().setBackground(new Color(162, 198, 235));
 		setBackground(Color.WHITE);
 		setBounds(100, 100, width, height);
 		setLocationRelativeTo(null);
@@ -150,12 +151,14 @@ public abstract class FramePrincipal extends JFrame {
 		int posYBotao, posXBotao, espacoDisponivelBotoes, deslocamentoListaPerguntasBtn;
 		//CRIA UMA LISTA DE JRADIOBUTTONS PARA LINKAR OS BOTOES
 		listaPerguntas = new ArrayList<>();
+		listaBotoesPerguntas = new ArrayList<>();
 		JRadioButton b;
 		b = new JRadioButton("0");
 		Dimension d = new Dimension();
 		Dimension dPerguntaAtual = new Dimension();
 		//LACO PARA COLOCAR AS LABELS NA JANELA, INICIALIZAR OS BOTOES E COLOCA-LOS NA JANELA
 		for (int i = 0; i < perguntas.length; i++) {
+			listaBotoesPerguntas.add(new ArrayList<JRadioButton>());
 			//CRIA UM GRUPO DE BOTOES PARA INSERIR OS JRADIOBUTTONS DA PERGUNTA ATUAL
 			listaPerguntas.add(new ButtonGroup());
 			
@@ -179,14 +182,17 @@ public abstract class FramePrincipal extends JFrame {
 			for (int j = 0; j < 5; j++) {
 
 				b = new JRadioButton();
+				listaBotoesPerguntas.get(i).add(b);
 				b.setText("" + (j + 1));
+				b.setActionCommand("" + (j + 1));
 				d = b.getPreferredSize();
+				
 				b.setBounds(posXBotao, posYBotao, d.width, d.height);
-				add(b);
+				add(listaBotoesPerguntas.get(i).get(j));
 				
 				posXBotao += deslocamentoListaPerguntasBtn;
 				
-				listaPerguntas.get(i).add(b);
+				listaPerguntas.get(i).add(listaBotoesPerguntas.get(i).get(j));
 
 			}
 			posYLabel += deslocamentoListaPerguntasLabel;
@@ -318,5 +324,7 @@ public abstract class FramePrincipal extends JFrame {
 		ArrayList<JMenuItem> listaVersoes = new ArrayList<JMenuItem>();
 
 	}
+	
+	
 
 }

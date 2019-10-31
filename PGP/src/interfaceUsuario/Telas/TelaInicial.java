@@ -1,6 +1,5 @@
 package interfaceUsuario.Telas;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.util.Calendar;
@@ -8,7 +7,6 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.Properties;
 
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -67,12 +65,12 @@ public class TelaInicial extends FramePrincipal {
 	public TelaInicial() {
 		super(new Funcionario());
 
-		qtdPerguntasEntrega = 2;
-		qtdPerguntasMetas = 2;
-		qtdPerguntasHabilidadesPessoais = 2;
-		qtdPerguntasHabilidadesSociais = 2;
-		qtdPerguntasProatividade = 2;
-		qtdPerguntasAdequacaoAsRegras = 2;
+		qtdPerguntasEntrega = 5;
+		qtdPerguntasMetas = 5;
+		qtdPerguntasHabilidadesPessoais = 5;
+		qtdPerguntasHabilidadesSociais = 5;
+		qtdPerguntasProatividade = 5;
+		qtdPerguntasAdequacaoAsRegras = 5;
 
 		this.height = 600;
 		this.width = 700;
@@ -443,27 +441,27 @@ public class TelaInicial extends FramePrincipal {
 
 		} else {
 			for (int i = 0; i < qtdPerguntasEntrega; i++) {
-				funcionarioAvaliado.avaliacaoEntrega.add(i);
+				funcionarioAvaliado.avaliacaoEntrega.add(1);
 			}
 
 			for (int i = 0; i < qtdPerguntasMetas; i++) {
-				funcionarioAvaliado.avaliacaoMetas.add(i);
+				funcionarioAvaliado.avaliacaoMetas.add(1);
 			}
 
 			for (int i = 0; i < qtdPerguntasHabilidadesPessoais; i++) {
-				funcionarioAvaliado.avaliacaoHabilidadesPessoais.add(i);
+				funcionarioAvaliado.avaliacaoHabilidadesPessoais.add(1);
 			}
 
 			for (int i = 0; i < qtdPerguntasHabilidadesSociais; i++) {
-				funcionarioAvaliado.avaliacaoHabilidadesSociais.add(i);
+				funcionarioAvaliado.avaliacaoHabilidadesSociais.add(1);
 			}
 
 			for (int i = 0; i < qtdPerguntasProatividade; i++) {
-				funcionarioAvaliado.avaliacaoProatividade.add(i);
+				funcionarioAvaliado.avaliacaoProatividade.add(1);
 			}
 
 			for (int i = 0; i < qtdPerguntasAdequacaoAsRegras; i++) {
-				funcionarioAvaliado.avaliacaoAdequacaoAsRegras.add(i);
+				funcionarioAvaliado.avaliacaoAdequacaoAsRegras.add(1);
 			}
 		}
 	}

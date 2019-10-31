@@ -59,10 +59,12 @@ public class TelaHabilidadesSociais extends FramePrincipal {
 						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
 				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
 						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>" });
+		preencheRespostas();
 	}
 
 	/****************************************************************************/
 	public void avancar(java.awt.event.ActionEvent evt) {
+		guardaRespostas();
 		JFrame telaMetas = InterfaceController.controlaTelas("TelaProatividade", funcionarioAvaliado);
 		telaMetas.setVisible(true);
 		dispose();
@@ -70,11 +72,34 @@ public class TelaHabilidadesSociais extends FramePrincipal {
 
 	/****************************************************************************/
 	public void voltar(java.awt.event.ActionEvent evt) {
-
+		guardaRespostas();
 		JFrame telaHabilidadesPessoais = InterfaceController.controlaTelas("TelaHabilidadesPessoais", null);
 		telaHabilidadesPessoais.setVisible(true);
 		dispose();
 	}
 
 	/****************************************************************************/
+	protected void guardaRespostas() {
+		try {
+			for (int i = 0; i < listaPerguntas.size(); i++) {
+				funcionarioAvaliado.avaliacaoEntrega
+						.add(i, Integer.parseInt(listaPerguntas.get(i).getSelection().getActionCommand()));
+			}
+		} catch (NullPointerException np) {
+
+		}
+	}
+
+	
+	/****************************************************************************/
+	protected void preencheRespostas() {
+		try {
+			for(int i = 0; i < listaPerguntas.size(); i++) {
+				listaPerguntas.get(i).clearSelection();
+				listaBotoesPerguntas.get(i).get(funcionarioAvaliado.avaliacaoHabilidadesSociais.get(i)).setSelected(true);
+			}
+		}catch(NullPointerException np) {
+			
+		}
+	}
 }

@@ -61,7 +61,7 @@ public class TelaAdequacaoAsRegras extends FramePrincipal {
 						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
 				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
 						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>" });
-
+		preencheRespostas();
 	}
 
 	/****************************************************************************/
@@ -97,11 +97,34 @@ public class TelaAdequacaoAsRegras extends FramePrincipal {
 
 	/****************************************************************************/
 	public void voltar(java.awt.event.ActionEvent evt) {
-
+		guardaRespostas();
 		JFrame telaProatividade = InterfaceController.controlaTelas("TelaProatividade", null);
 		telaProatividade.setVisible(true);
 		dispose();
 	}
 
 	/****************************************************************************/
+	protected void guardaRespostas() {
+		try {
+			for (int i = 0; i < listaPerguntas.size(); i++) {
+				funcionarioAvaliado.avaliacaoEntrega
+						.add(i, Integer.parseInt(listaPerguntas.get(i).getSelection().getActionCommand()));
+			}
+		} catch (NullPointerException np) {
+
+		}
+	}
+
+	
+	/****************************************************************************/
+	protected void preencheRespostas() {
+		try {
+			for(int i = 0; i < listaPerguntas.size(); i++) {
+				listaPerguntas.get(i).clearSelection();
+				listaBotoesPerguntas.get(i).get(funcionarioAvaliado.avaliacaoAdequacaoAsRegras.get(i)).setSelected(true);
+			}
+		}catch(NullPointerException np) {
+			
+		}
+	}
 }

@@ -20,7 +20,6 @@ FROM Funcionario]]>
 	<field name="avaliacaoHabilidadesSociais" class="java.util.ArrayList"/>
 	<field name="avaliacaoProatividade" class="java.util.ArrayList"/>
 	<field name="avaliacaoAdequacaoAsRegras" class="java.util.ArrayList"/>
-	<field name="entregas2" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -147,12 +146,6 @@ FROM Funcionario]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{departamento}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="66" y="0" width="100" height="30" uuid="5fd4e723-43c4-4847-8745-905502ded0bf">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0a9ddfcf-6ee8-43f5-b126-cd75a5da287a"/>
-				</reportElement>
-				<text><![CDATA[entregas2]]></text>
-			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
@@ -267,39 +260,7 @@ FROM Funcionario]]>
 				<reportElement x="12" y="100" width="162" height="17" uuid="b2db862f-c3e7-4932-9fb0-9ad7beefc8d3">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f7427312-2160-41c5-91c9-effe18494af1"/>
 				</reportElement>
-				<textFieldExpression><![CDATA[$F{entregas1}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="10" y="139" width="162" height="17" uuid="d610c7a9-056b-4b05-86f4-d01f20794c57">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f7427312-2160-41c5-91c9-effe18494af1"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<textFieldExpression><![CDATA[$F{entregas1}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="10" y="177" width="162" height="17" uuid="d8133752-e580-491e-9a75-7ab0e767722f">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f7427312-2160-41c5-91c9-effe18494af1"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<textFieldExpression><![CDATA[$F{entregas1}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="12" y="220" width="162" height="17" uuid="cedbafd3-e770-4b15-9d03-4efe80d5c4ee">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f7427312-2160-41c5-91c9-effe18494af1"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<textFieldExpression><![CDATA[$F{entregas1}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="12" y="260" width="162" height="17" uuid="422540e0-cece-4cae-af00-d43c3073ce9e">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f7427312-2160-41c5-91c9-effe18494af1"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<textFieldExpression><![CDATA[$F{entregas1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{avaliacaoEntrega[1]}]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="543">

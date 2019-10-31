@@ -1,5 +1,9 @@
 package interfaceUsuario.Telas;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -48,6 +52,19 @@ public class TelaEntrega extends FramePrincipal {
 				avancar(evt);
 			}
 		});
+		
+		this.addWindowListener(new java.awt.event.WindowAdapter() {
+		    @Override
+		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+		        if (JOptionPane.showConfirmDialog(getContentPane(), 
+		            "Gostaria de salvar antes de sair?", "Fechar janela?", 
+		            JOptionPane.YES_NO_OPTION,
+		            JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+		        	encerrar();
+		            System.exit(0);
+		        }
+		    }
+		});
 
 		inserePerguntas(new String[] {
 				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
@@ -60,10 +77,12 @@ public class TelaEntrega extends FramePrincipal {
 						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
 				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
 						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>" });
+		preencheRespostas();
 	}
 
 	/****************************************************************************/
 	public void avancar(java.awt.event.ActionEvent evt) {
+		guardaRespostas();
 		JFrame telaMetas = InterfaceController.controlaTelas("TelaMetas", funcionarioAvaliado);
 		telaMetas.setVisible(true);
 		dispose();
@@ -81,7 +100,7 @@ public class TelaEntrega extends FramePrincipal {
 					"Voce gostaria de salvar os resultados da avaliacao antes de sair?");
 			if (salvarAvaliacao == 0) {
 				// Salvar avaliacao
-
+				encerrar();
 			}
 			// Voltar para a tela inicial
 			JFrame telaInicial = InterfaceController.controlaTelas("TelaInicial", null);
@@ -92,4 +111,26 @@ public class TelaEntrega extends FramePrincipal {
 	}
 
 	/****************************************************************************/
+	protected void guardaRespostas() {
+		try {
+			for (int i = 0; i < listaPerguntas.size(); i++) {
+				funcionarioAvaliado.avaliacaoEntrega
+						.add(i, Integer.parseInt(listaPerguntas.get(i).getSelection().getActionCommand()));
+			}
+		} catch (NullPointerException np) {
+
+		}
+	}
+
+	/****************************************************************************/
+	protected void preencheRespostas() {
+		try {
+			for (int i = 0; i < listaPerguntas.size(); i++) {
+				listaPerguntas.get(i).clearSelection();
+				listaBotoesPerguntas.get(i).get(funcionarioAvaliado.avaliacaoEntrega.get(i)).setSelected(true);
+			}
+		} catch (NullPointerException np) {
+
+		}
+	}
 }

@@ -35,6 +35,43 @@ public class Funcionario {
 	public ArrayList<Integer> avaliacaoHabilidadesSociais;
 	public ArrayList<Integer> avaliacaoProatividade;
 	public ArrayList<Integer> avaliacaoAdequacaoAsRegras;
+
+	String entregas1 = "1";
+	String entregas2 = "1";
+	String entregas3 = "1";
+	String entregas4 = "1";
+	String entregas5 = "1";
+	
+	String metas1 = "1";
+	String metas2 = "1";
+	String metas3 = "1";
+	String metas4 = "1";
+	String metas5 = "1";
+
+	String habilidadesPessoais1 = "1";
+	String habilidadesPessoais2 = "1";
+	String habilidadesPessoais3 = "1";
+	String habilidadesPessoais4 = "1";
+	String habilidadesPessoais5 = "1";
+
+	String habilidadesSociais1 = "1";
+	String habilidadesSociais2 = "1";
+	String habilidadesSociais3 = "1";
+	String habilidadesSociais4 = "1";
+	String habilidadesSociais5 = "1";
+
+	String proatividade1 = "1";
+	String proatividade2 = "1";
+	String proatividade3 = "1";
+	String proatividade4 = "1";
+	String proatividade5 = "1";
+
+	String adequacaoAsRegras1 = "1";
+	String adequacaoAsRegras2 = "1";
+	String adequacaoAsRegras3 = "1";
+	String adequacaoAsRegras4 = "1";
+	String adequacaoAsRegras5 = "1";
+	
 	
 	public Funcionario() {
 		this.avaliacaoEntrega = new ArrayList<Integer>();
