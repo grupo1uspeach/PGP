@@ -50,12 +50,13 @@ public class TelaHabilidadesPessoais extends FramePrincipal {
 			}
 		});
 		inserePerguntas(new String[] {
-				"<html><body>Baseia-se na dependência mútua e compreensão</body></html>",
-				"<html><body>Responde rapidamente a novas instruções, situações, métodos e procedimentos</body></html>",
-				"<html><body>Demonstra habilidade de aprender e adaptar-se rapidamente às mudanças de situação</body></html>",
-				"<html><body>Compartilha experiências de aprendizado com os colegas</body></html>",
-				"<html><body>Se comunica de maneira clara e objetiva com seus colegas</body></html>" });
-		preencheRespostas();
+				"<html><body><h2>Avalie as questões abaixo de 0 à 5, onde 5 seria o maior grau de atendimento ao requisito:</h2>Baseia-se na dependência mútua e compreensão</body></html>",
+				"<html><body><p style=\"padding-bottom: 20px\">Responde rapidamente a novas instruções, situações, métodos e procedimentos</p></body></html>",
+				"<html><body><p style=\"padding-bottom: 20px\">Demonstra habilidade de aprender e adaptar-se rapidamente às mudanças de situação</body></html>",
+				"<html><body><p style=\"padding-bottom: 20px\">Compartilha experiências de aprendizado com os colegas</p></body></html>",
+				"<html><body><p style=\"padding-bottom: 20px\">Se comunica de maneira clara e objetiva com seus colegas</p></body></html>" });
+
+				preencheRespostas();
 	}
 
 	/****************************************************************************/

@@ -49,17 +49,12 @@ public class TelaHabilidadesSociais extends FramePrincipal {
 			}
 		});
 		inserePerguntas(new String[] {
-				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
-						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
-				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
-						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
-				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
-						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
-				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
-						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
-				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
-						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>" });
-		preencheRespostas();
+				"<html><body><h2>Avalie as questões abaixo de 0 à 5, onde 5 seria o maior grau de atendimento ao requisito:</h2>Reconhece as necessidades dos outros e auxilia a encontrar uma solução</body></html>",
+				"<html><body><p style=\"padding-bottom: 20px\">Estabelece relações de trabalho efetivas</p></body></html>",
+				"<html><body><p style=\"padding-bottom: 20px\">Incentiva a colaboração com a equipe</body></html>",
+				"<html><body><p style=\"padding-bottom: 20px\">Baseia-se na dependência mútua e compreensão</p></body></html>",
+				"<html><body><p style=\"padding-bottom: 20px\">Gosta de compartilhar sua experiência</p></body></html>" });
+			preencheRespostas();
 	}
 
 	/****************************************************************************/

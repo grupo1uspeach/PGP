@@ -54,16 +54,12 @@ public class TelaProatividade extends FramePrincipal {
 			}
 		});
 		inserePerguntas(new String[] {
-				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
-						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
-				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
-						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
-				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
-						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
-				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
-						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
-				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
-						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>" });
+				"<html><body><h2>Avalie as questões abaixo de 0 à 5, onde 5 seria o maior grau de atendimento ao requisito:</h2>É inovador em situações adversas</body></html>",
+				"<html><body><p style=\"padding-bottom: 20px\">Busca soluções inovadoras</p></body></html>",
+				"<html><body><p style=\"padding-bottom: 20px\">Fometa a curiosidade por soluções inovadoras</p></body></html>",
+				"<html><body><p style=\"padding-bottom: 20px\">Enxerga oportunidade e as aproveita</p></body></html>",
+				"<html><body><p style=\"padding-bottom: 20px\">Quando vê algo que o incomoda, tenta solucionar ou comunicar a seus superiores a respeito </p></body></html>" });
+		
 		preencheRespostas();
 	}
 

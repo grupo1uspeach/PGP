@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 
 import beans.Funcionario;
 import interfaceUsuario.Telas.TelaAdequacaoAsRegras;
+import interfaceUsuario.Telas.TelaAnotacoes;
 import interfaceUsuario.Telas.TelaEntrega;
 import interfaceUsuario.Telas.TelaHabilidadesPessoais;
 import interfaceUsuario.Telas.TelaHabilidadesSociais;
@@ -49,7 +50,14 @@ public class InterfaceController {
 		case "TelaProatividade":
 			novaTela = new TelaProatividade(funcionarioAvaliado);
 			break;
+			
+
+		case "TelaAnotacoes":
+			novaTela = new TelaAnotacoes(funcionarioAvaliado);
+			break;
+		
 		}
+		
 
 		return novaTela;
 	}

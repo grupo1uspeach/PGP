@@ -20,7 +20,7 @@ public class TelaAdequacaoAsRegras extends FramePrincipal {
 
 	/****************************************************************************/
 	private void adicionaComponentes() {
-		inicializaBotoesFixos(4, new String[] { "Voltar", "Salvar", "Gerar relatório", "Encerrar" });
+		inicializaBotoesFixos(4, new String[] { "Voltar", "Salvar", "Gerar relatório", "Avancar" });
 		insereBotoesFixos();
 
 		// botao avancar
@@ -51,48 +51,20 @@ public class TelaAdequacaoAsRegras extends FramePrincipal {
 			}
 		});
 		inserePerguntas(new String[] {
-				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
-						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
-				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
-						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
-				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
-						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
-				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
-						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>",
-				"<html><body>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa..."
-						+ "<br>Achei melhor testar um tipo de pergunta aqui, mas nao sabia o que escrever, entao escrevi qualquer coisa...</body></html>" });
+				"<html><body><h2>Avalie as questões abaixo de 0 à 5, onde 5 seria o maior grau de atendimento ao requisito:</h2>Vive os valores da empresa</body></html>",
+				"<html><body><p style=\"padding-bottom: 20px\">Promove forte apoio a missão e visão da empresa</p></body></html>",
+				"<html><body><p style=\"padding-bottom: 20px\">Respeito o código de vestimenta da empresa</p></body></html>",
+				"<html><body><p style=\"padding-bottom: 20px\">Demonstra seguir a cultura e valores da empresa mesmo fora do ambiente de trabalho</body></html>",
+				"<html><body><p style=\"padding-bottom: 20px\">Mantém seu espaço de trabalho organizado</p></body></html>" });
 		preencheRespostas();
 	}
 
 	/****************************************************************************/
 	public void avancar(java.awt.event.ActionEvent evt) {
-		JList list = new JList(new String[] { "Continuar avaliando", "Gerar relatório", "Salvar e fechar",
-				"Salvar e avaliar um novo funcionario", "Descartar alteracoes" });
-		JOptionPane.showMessageDialog(this, list, "A avaliacao chegou ao fim. O que deseja fazer?",
-				JOptionPane.PLAIN_MESSAGE);
-
-		if (Arrays.toString(list.getSelectedIndices()).equals("[1]")) {
-			// Gerar Relatorio
-			geraRelatorio(null);
-		} else if (Arrays.toString(list.getSelectedIndices()).equals("[2]")) {
-			// Salvar e fechar
-			encerrar();
-			dispose();
-		} else if (Arrays.toString(list.getSelectedIndices()).equals("[3]")) {
-			// Salvar e avaliar um novo funcionario
-			encerrar();
-			JFrame telaInicial = InterfaceController.controlaTelas("TelaInicial", null);
-			telaInicial.setVisible(true);
-			dispose();
-
-		} else if (Arrays.toString(list.getSelectedIndices()).equals("[4]")) {
-			// Descartar as alteracoes feitas
-			JFrame telaInicial = InterfaceController.controlaTelas("TelaInicial", null);
-			telaInicial.setVisible(true);
-			dispose();
-
-		}
-
+		guardaRespostas();
+		JFrame telaAnotacoes = InterfaceController.controlaTelas("TelaAnotacoes", funcionarioAvaliado);
+		telaAnotacoes.setVisible(true);
+		dispose();
 	}
 
 	/****************************************************************************/
