@@ -22,12 +22,15 @@ import javax.swing.JFormattedTextField;
 import java.awt.Component;
 import javax.swing.JSeparator;
 import javax.swing.JLabel;
+import java.awt.Font;
 
 public class TelaAnotacoes extends FramePrincipal {
 
 	/****************************************************************************/
 	
 	private JFrame frame;
+	JEditorPane editorPane;
+	String anotacoes;
 	
 	public TelaAnotacoes(Funcionario f) {
 		super(f);
@@ -40,21 +43,25 @@ public class TelaAnotacoes extends FramePrincipal {
 	private void adicionaComponentes() {
 		getContentPane().setLayout(null);
 		
-		JEditorPane editorPane = new JEditorPane();
+		editorPane = new JEditorPane();
 		editorPane.setBackground(Color.WHITE);
 		editorPane.setBounds(296, 166, 466, 180);
 		getContentPane().add(editorPane);
 		
-		JLabel lblEsteEspao = new JLabel("Este espaço é destinado a qualquer anotação referente a avaliação:");
-		lblEsteEspao.setBounds(296, 138, 466, 17);
+		
+		JLabel lblEsteEspao = new JLabel("Insira qualquer outra observação importante neste campo:");
+		lblEsteEspao.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblEsteEspao.setBounds(296, 123, 466, 32);
 		getContentPane().add(lblEsteEspao);
 		
 		inicializaBotoesFixos(4, new String[] { "Voltar", "Salvar", "Gerar relatório", "Encerrar" });
 		insereBotoesFixos();
 
-		// botao avancar
+		// botao voltar
 		listaBotoesFixos.get(0).addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				anotacoes = editorPane.getText();
+				funcionarioAvaliado.setAnotacoesGerais(anotacoes);
 				voltar(evt);
 			}
 		});
@@ -62,6 +69,8 @@ public class TelaAnotacoes extends FramePrincipal {
 		// botao salvar
 		listaBotoesFixos.get(1).addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				anotacoes = editorPane.getText();
+				funcionarioAvaliado.setAnotacoesGerais(anotacoes);
 				salvar(evt);
 			}
 		});
@@ -69,13 +78,17 @@ public class TelaAnotacoes extends FramePrincipal {
 		// botao gerar relatorio
 		listaBotoesFixos.get(2).addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				anotacoes = editorPane.getText();
+				funcionarioAvaliado.setAnotacoesGerais(anotacoes);
 				geraRelatorio(evt);
 			}
 		});
 
-		// botao avancar
+		// botao avançar
 		listaBotoesFixos.get(3).addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				anotacoes = editorPane.getText();
+				funcionarioAvaliado.setAnotacoesGerais(anotacoes);
 				avancar(evt);
 			}
 		});
@@ -87,7 +100,7 @@ public class TelaAnotacoes extends FramePrincipal {
 
 	/****************************************************************************/
 	public void avancar(java.awt.event.ActionEvent evt) {
-		JList list = new JList(new String[] { "Continuar avaliando", "Gerar relat�rio", "Salvar e fechar",
+		JList list = new JList(new String[] { "Continuar avaliando", "Gerar relatório", "Salvar e fechar",
 				"Salvar e avaliar um novo funcionario", "Descartar alteracoes" });
 		JOptionPane.showMessageDialog(this, list, "A avaliacao chegou ao fim. O que deseja fazer?",
 				JOptionPane.PLAIN_MESSAGE);
@@ -127,25 +140,15 @@ public class TelaAnotacoes extends FramePrincipal {
 	/****************************************************************************/
 	protected void guardaRespostas() {
 		try {
-			for (int i = 0; i < listaPerguntas.size(); i++) {
-				funcionarioAvaliado.avaliacaoEntrega
-						.add(i, Integer.parseInt(listaPerguntas.get(i).getSelection().getActionCommand()));
-			}
-		} catch (NullPointerException np) {
-
+			anotacoes = editorPane.getText();
+			funcionarioAvaliado.setAnotacoesGerais(anotacoes);
+			System.out.println(anotacoes);
+					
+		}catch(NullPointerException np){
+			
 		}
 	}
 
 	
 	/****************************************************************************/
-	protected void preencheRespostas() {
-		try {
-			for(int i = 0; i < listaPerguntas.size(); i++) {
-				listaPerguntas.get(i).clearSelection();
-				listaBotoesPerguntas.get(i).get(funcionarioAvaliado.avaliacaoAdequacaoAsRegras.get(i)).setSelected(true);
-			}
-		}catch(NullPointerException np) {
-			
-		}
-	}	
 }

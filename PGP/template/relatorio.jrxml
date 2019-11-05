@@ -44,6 +44,7 @@ FROM Funcionario]]>
 	<field name="adequacaoAsRegras3" class="java.lang.String"/>
 	<field name="adequacaoAsRegras4" class="java.lang.String"/>
 	<field name="adequacaoAsRegras5" class="java.lang.String"/>
+	<field name="anotacoesGerais" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -211,14 +212,14 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[1.]]></text>
+				<text><![CDATA[1.Entrega suas atividades no prazo determinado]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="117" width="543" height="18" uuid="6768ca23-939a-4709-ad4a-0a917c1b7715"/>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[2.]]></text>
+				<text><![CDATA[2.Produz mais do que o esperado continuamente]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="155" width="542" height="18" uuid="f2689b6a-8823-4cb9-944b-810e7a3500a6">
@@ -227,14 +228,14 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[3.]]></text>
+				<text><![CDATA[3.É um contribuinte importante para o sucesso do departamento]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="12" y="194" width="542" height="18" uuid="950207ba-441d-48dd-b76b-1ab68702c00b"/>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[4.]]></text>
+				<text><![CDATA[4.Realiza uma contribuição substancial para o crescimento contínuo da empresa]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="234" width="541" height="18" uuid="12722856-11da-4985-b25b-0a6d3cdc5b74">
@@ -243,42 +244,42 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[5.]]></text>
+				<text><![CDATA[5.Excede objetivos de performance continuamente]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="310" width="541" height="18" uuid="e70772b5-64b4-492e-9e86-cbf4fe6b6f6e"/>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[1.]]></text>
+				<text><![CDATA[1.Excede a meta original em suas tarefas atribuidas]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="346" width="541" height="18" uuid="1c5b5f4a-2f1d-41dc-ac53-42fd0dd4243b"/>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[2.]]></text>
+				<text><![CDATA[2.Trouxe grandes avanços na entrega final do produto]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="385" width="542" height="18" uuid="08b4697d-a439-43ac-ae23-c5f3f11ad169"/>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[3.]]></text>
+				<text><![CDATA[3.Supera padrões de produtividade]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="12" y="424" width="542" height="18" uuid="1591d6f7-6fb7-4253-8f8d-3eb61ff30de5"/>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[4.]]></text>
+				<text><![CDATA[4.Destacou-se em desenvolver estratégias que ultrapassaram positivamente as metas estabelecidas]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="13" y="463" width="541" height="18" uuid="46a96f77-f61c-4e2f-bb35-782985d15eea"/>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[5.]]></text>
+				<text><![CDATA[5.Consegue cumprir as metas determinadas mesmo em relações adversas]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="11" y="96" width="162" height="17" uuid="b2db862f-c3e7-4932-9fb0-9ad7beefc8d3">
@@ -374,7 +375,7 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[1.]]></text>
+				<text><![CDATA[1.Baseia-se na dependência mútua e compreensão]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="119" width="543" height="18" uuid="ae11582b-9512-424b-89eb-2bd7d856b03f">
@@ -383,21 +384,21 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[2.]]></text>
+				<text><![CDATA[2.Responde rapidamente a novas instruções, situações, métodos e procedimentos]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="158" width="542" height="18" uuid="7926a6d6-40fb-4f19-8559-7b6601294367"/>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[3.]]></text>
+				<text><![CDATA[3.Demonstra habilidade de aprender e adaptar-se rapidamente às mudanças de situação]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="197" width="542" height="18" uuid="e9876f80-bc38-467c-a0b0-a5f479cee530"/>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[4.]]></text>
+				<text><![CDATA[4.Compartilha experiências de aprendizado com os colegas]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="10" y="236" width="541" height="18" uuid="604320bc-6f34-4c69-84ad-b83d68f4ced4">
@@ -406,7 +407,7 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[5.]]></text>
+				<text><![CDATA[5.Se comunica de maneira clara e objetiva com seus colegas]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="423" width="542" height="18" uuid="f4875533-d3d8-4943-835d-56bc00ca1d6a">
@@ -415,7 +416,7 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[4.]]></text>
+				<text><![CDATA[4.Baseia-se na dependência mútua e compreensão]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="384" width="542" height="18" uuid="04509e17-d6fe-45e6-b33e-408f516e39d4">
@@ -424,7 +425,7 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[3.]]></text>
+				<text><![CDATA[3.Incentiva a colaboração com a equipe]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="346" width="543" height="18" uuid="0b266018-cf1b-4848-ba84-af1eae5e3e0a">
@@ -433,7 +434,7 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[2.]]></text>
+				<text><![CDATA[2.Estabelece relações de trabalho efetivas]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="462" width="541" height="18" uuid="e649d226-1aec-4f49-9b0e-90984ae7ff08">
@@ -442,7 +443,7 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[5.]]></text>
+				<text><![CDATA[5.Gosta de compartilhar sua experiência]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="309" width="543" height="18" uuid="65fdd37b-31d6-4dd5-b8af-6dc5d4ab8ed0">
@@ -451,7 +452,7 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[1.]]></text>
+				<text><![CDATA[1.Reconhece as necessidades dos outros e auxilia a encontrar uma solução]]></text>
 			</staticText>
 			<rectangle>
 				<reportElement mode="Opaque" x="0" y="36" width="551" height="2" forecolor="#A2C6EB" backcolor="#A2C6EB" uuid="2edb8e7a-c774-42c2-8fa4-5eecda530f2a">
@@ -542,7 +543,7 @@ FROM Funcionario]]>
 				<textFieldExpression><![CDATA[$F{habilidadesSociais5}]]></textFieldExpression>
 			</textField>
 		</band>
-		<band height="471">
+		<band height="637">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
 				<reportElement x="8" y="251" width="175" height="30" uuid="a3fc9e82-3788-4d88-8d0b-2925556db3c7">
@@ -560,7 +561,7 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[5.]]></text>
+				<text><![CDATA[5.Quando vê algo que o incomoda, tenta solucionar ou comunicar a seus superiores a respeito]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="51" width="543" height="18" uuid="0b1645f4-5791-4fb4-bbca-cb98535c75a1">
@@ -569,7 +570,7 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[1.]]></text>
+				<text><![CDATA[1.É inovador em situações adversas]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="91" width="543" height="18" uuid="671b70f7-257c-4e3a-8035-e373e9ee10d4">
@@ -578,7 +579,7 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[2.]]></text>
+				<text><![CDATA[2.Busca soluções inovadoras]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="132" width="542" height="18" uuid="04d1c30a-68c3-465b-816c-a4849bee6e64">
@@ -587,7 +588,7 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[3.]]></text>
+				<text><![CDATA[3.Fometa a curiosidade por soluções inovadoras]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="172" width="542" height="18" uuid="c1a392d2-6919-4221-870f-74cd47a49222">
@@ -596,7 +597,7 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[4.]]></text>
+				<text><![CDATA[4.Enxerga oportunidade e as aproveita]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="321" width="543" height="18" uuid="940442f3-93da-4c47-b109-9829d6f96104">
@@ -605,7 +606,7 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[2.]]></text>
+				<text><![CDATA[2.Promove forte apoio a missão e visão da empresa]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="398" width="542" height="18" uuid="0ffd722f-9b6e-464f-b009-34a7dc4dda68">
@@ -614,7 +615,7 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[4.]]></text>
+				<text><![CDATA[4.Demonstra seguir a cultura e valores da empresa mesmo fora do ambiente de trabalho]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="359" width="542" height="18" uuid="8f863e90-4874-4656-9880-f031f049cb78">
@@ -623,7 +624,7 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[3.]]></text>
+				<text><![CDATA[3.Respeito o código de vestimenta da empresa]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="436" width="541" height="18" uuid="2c41a2f3-9e2e-4f9f-92ad-4509deb8a891">
@@ -632,7 +633,7 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[5.]]></text>
+				<text><![CDATA[5.Mantém seu espaço de trabalho organizado]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="283" width="543" height="18" uuid="7808c5ee-107b-4fb0-a4c2-acdadaa8b97e">
@@ -641,7 +642,7 @@ FROM Funcionario]]>
 				<textElement>
 					<font fontName="Franklin Gothic Medium" size="12"/>
 				</textElement>
-				<text><![CDATA[1.]]></text>
+				<text><![CDATA[1.Vive os valores da empresa]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="8" y="18" width="100" height="30" uuid="ffebd006-bce2-43bb-bde2-67d44b87708c">
@@ -737,6 +738,22 @@ FROM Funcionario]]>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{adequacaoAsRegras5}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="8" y="530" width="502" height="80" uuid="9f1b62ca-0510-4f7e-a623-8f32079000c5">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{anotacoesGerais}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="11" y="490" width="175" height="30" uuid="b7cd4557-6737-4ed4-a315-43139c58abb8">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Franklin Gothic Medium" size="16"/>
+				</textElement>
+				<text><![CDATA[Anotações Gerais]]></text>
+			</staticText>
 		</band>
 	</detail>
 </jasperReport>

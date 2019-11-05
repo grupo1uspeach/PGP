@@ -35,6 +35,7 @@ public class Funcionario {
 	public ArrayList<Integer> avaliacaoHabilidadesSociais;
 	public ArrayList<Integer> avaliacaoProatividade;
 	public ArrayList<Integer> avaliacaoAdequacaoAsRegras;
+	//private String avaliacaoAnotacoesGerais;
 
 	private String metas1 = "5";
     private String metas2 = "5";
@@ -72,7 +73,11 @@ public class Funcionario {
     private String adequacaoAsRegras4 = "5";
     private String adequacaoAsRegras5 = "5";
     
+    private String anotacoesGerais;
+    
     public Funcionario() {
+    	//String anotacoesGerais = "Sem anotações gerais para o funcionário";
+    	
 		this.avaliacaoEntrega = new ArrayList<Integer>();
 		this.avaliacaoMetas = new ArrayList<Integer>();
 		this.avaliacaoHabilidadesPessoais = new ArrayList<Integer>();
@@ -117,8 +122,17 @@ public class Funcionario {
         this.adequacaoAsRegras3 = "" + avaliacaoAdequacaoAsRegras.get(2);
         this.adequacaoAsRegras4 = "" + avaliacaoAdequacaoAsRegras.get(3);
         this.adequacaoAsRegras5 = "" + avaliacaoAdequacaoAsRegras.get(4);
+        
+        this.anotacoesGerais = "" + getAnotacoesGerais();
     }
-	
+    
+  //Anotacoes
+    public void setAnotacoesGerais(String anotacoesGerais) {
+    	this.anotacoesGerais = anotacoesGerais; 
+    }
+    public String getAnotacoesGerais() {
+    	return this.anotacoesGerais;
+    }
     //Entregas
     public void setEntregas1(String entregas1) {
         this.entregas1 = entregas1; 

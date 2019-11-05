@@ -70,7 +70,7 @@ public class TelaEntrega extends FramePrincipal {
 				"<html><body><h2>Avalie as questões abaixo de 0 à 5, onde 5 seria o maior grau de atendimento ao requisito:</h2>Entrega suas atividades no prazo determinado</body></html>",
 				"<html><body><p style=\"padding-bottom: 20px\">Produz mais do que o esperado continuamente</p></body></html>",
 				"<html><body><p style=\"padding-bottom: 20px\">É um contribuinte importante para o sucesso do departamento</body></html>",
-				"<html><body><p style=\"padding-bottom: 20px\">Realiza uma contribuição substancial para o crescimento contínuo da empres</p></body></html>",
+				"<html><body><p style=\"padding-bottom: 20px\">Realiza uma contribuição substancial para o crescimento contínuo da empresa</p></body></html>",
 				"<html><body><p style=\"padding-bottom: 20px\">Excede objetivos de performance continuamente</p></body></html>" });
 
 		preencheRespostas();

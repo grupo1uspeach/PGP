@@ -26,6 +26,7 @@ public abstract class FramePrincipal extends JFrame {
 	protected ArrayList<ButtonGroup> listaPerguntas;
 	protected ArrayList<JLabel> listaLabelPerguntas;
 	protected ArrayList<ArrayList<JRadioButton>> listaBotoesPerguntas;
+	protected String anotacoesGerais;
 
 	protected JLabel titulo;
 	protected JLabel periodo;
@@ -261,6 +262,8 @@ public abstract class FramePrincipal extends JFrame {
 						+ "\n";
 			}
 
+			avaliacao += "anotacoes" + funcionarioAvaliado.getAnotacoesGerais();
+			
 			c.write(avaliacao);
 			c.close();
 
