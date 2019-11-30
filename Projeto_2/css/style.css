@@ -1,0 +1,19 @@
+html,body{
+    height: 100%;
+    width: 100%;
+}
+body{
+    background: #80A9FF;
+}
+.principal{
+    text-align: center;
+}
+
+.lista-funcionalidades{
+    width: 300px;
+    margin: 0 35%;
+}
+
+.lista-funcionalidades li{
+    text-align: left;
+}

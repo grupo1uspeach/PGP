@@ -1,0 +1,20 @@
+html,body{
+    height: 100%;
+    width: 100%;
+}
+body{
+    background: #80A9FF;
+}
+
+.principal{
+    text-align: center;
+}
+
+.area-de-texto{
+    
+}
+
+.botoes{
+    display: block;
+    margin: 30px 0;
+}

@@ -1,0 +1,21 @@
+html,body{
+    height: 100%;
+    width: 100%;
+}
+body{
+    background: #80A9FF;
+}
+
+.principal{
+    text-align: center;
+}
+.dados-funcionario{
+    display: block;
+    margin: 10px 0;
+}
+.dados_1{
+    display: block;
+    text-align: left;
+    margin: 0 35%;
+    padding: 10px 0;
+}
